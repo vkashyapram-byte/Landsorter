@@ -52,4 +52,10 @@ object DataModule {
     @Provides
     @Singleton
     fun provideMunicipalRepository(dao: ParcelDao): MunicipalRepository = OfflineMunicipalRepository(dao)
+
+    @Provides
+    @Singleton
+    fun provideSupabaseClient(): io.github.jan.supabase.SupabaseClient {
+        return com.govtech.landstack.data.remote.SupabaseConfig.client
+    }
 }

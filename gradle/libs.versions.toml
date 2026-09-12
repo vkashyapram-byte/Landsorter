@@ -22,6 +22,8 @@ retrofit = "2.11.0"
 serialization = "1.7.1"
 navigationCompose = "2.8.0"
 hiltNavigationCompose = "1.2.0"
+ktor = "2.3.12"
+supabase = "2.6.1"
 
 [libraries]
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidxCore" }
@@ -66,6 +68,10 @@ maplibre-android = { module = "org.maplibre.gl:android-sdk", version.ref = "mapl
 
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 play-services-location = { module = "com.google.android.gms:play-services-location", version = "21.3.0" }
+
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+supabase-postgrest = { module = "io.github.jan-tennert.supabase:postgrest-kt", version.ref = "supabase" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }

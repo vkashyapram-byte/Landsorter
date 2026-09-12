@@ -104,4 +104,9 @@ dependencies {
 
   // Location / GNSS
   implementation(libs.play.services.location)
+
+  // Supabase & Ktor
+  implementation(libs.ktor.client.core)
+  implementation(libs.ktor.client.cio)
+  implementation(libs.supabase.postgrest)
 }

@@ -16,6 +16,9 @@ interface ParcelDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertParcels(parcels: List<ParcelEntity>)
+
+    @Query("SELECT * FROM parcels")
+    suspend fun getAllParcelsSync(): List<ParcelEntity>
 }
 
 @Dao
@@ -25,4 +28,7 @@ interface AuditLogDao {
 
     @Insert
     suspend fun insertLog(log: AuditLogEntity)
+
+    @Query("SELECT * FROM audit_log ORDER BY timestamp DESC")
+    suspend fun getAllLogsSync(): List<AuditLogEntity>
 }
