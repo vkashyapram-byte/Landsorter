@@ -1,21 +1,27 @@
 [versions]
-androidGradlePlugin = "9.0.1"
-androidxCore = "1.18.0"
-androidxLifecycle = "2.10.0"
-androidxActivity = "1.13.0"
-androidxComposeBom = "2026.03.01"
-androidxTest = "1.7.0"
-androidxTestExt = "1.3.0"
-androidxTestRunner = "1.7.0"
-androidxTestEspresso = "3.7.0"
-coroutines = "1.10.2"
+androidGradlePlugin = "8.7.3"
+androidxCore = "1.13.1"
+androidxLifecycle = "2.8.6"
+androidxActivity = "1.9.2"
+androidxComposeBom = "2024.10.00"
+androidxTest = "1.6.1"
+androidxTestExt = "1.2.1"
+androidxTestRunner = "1.6.2"
+androidxTestEspresso = "3.6.1"
+coroutines = "1.9.0"
 junit = "4.13.2"
-kotlin = "2.3.20"
+kotlin = "2.0.21"
 nav3Core = "1.0.1"
 lifecycleViewmodelNav3 = "2.10.0"
-supabase = "3.0.0"
-ktor = "3.0.0"
-playServicesLocation = "21.3.0"
+
+hilt = "2.51.1"
+room = "2.6.1"
+maplibre = "11.1.0"
+vico = "2.0.0-alpha24"
+retrofit = "2.11.0"
+serialization = "1.7.1"
+navigationCompose = "2.8.0"
+hiltNavigationCompose = "1.2.0"
 
 [libraries]
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidxCore" }
@@ -40,19 +46,30 @@ androidx-navigation3-runtime = { module = "androidx.navigation3:navigation3-runt
 androidx-navigation3-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "nav3Core" }
 androidx-lifecycle-viewmodel-navigation3 = { module = "androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "lifecycleViewmodelNav3" }
 
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
+hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+
+maplibre-android = { module = "org.maplibre.gl:android-sdk", version.ref = "maplibre" }
+    # maplibre-compose = { module = "org.maplibre.gl:android-sdk-compose", version.ref = "maplibre" }
+    
+    retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+    retrofit-kotlinx-serialization = { module = "com.squareup.retrofit2:converter-kotlinx-serialization", version.ref = "retrofit" }
+    kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
+    
+    # vico-compose = { module = "com.patrykandpatrick.vico:compose", version.ref = "vico" }
+    # vico-compose-m3 = { module = "com.patrykandpatrick.vico:compose-m3", version.ref = "vico" }
+
+navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+play-services-location = { module = "com.google.android.gms:play-services-location", version = "21.3.0" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-
-[libraries.supabase-postgrest]
-module = "io.github.jan-tennert.supabase:postgrest-kt"
-version.ref = "supabase"
-
-[libraries.ktor-client-android]
-module = "io.ktor:ktor-client-android"
-version.ref = "ktor"
-
-[libraries.play-services-location]
-module = "com.google.android.gms:play-services-location"
-version.ref = "playServicesLocation"
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+ksp = { id = "com.google.devtools.ksp", version = "2.0.21-1.0.28" }

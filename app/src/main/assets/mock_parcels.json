@@ -1,0 +1,144 @@
+[
+  {
+    "base": {
+      "ulpin": "CH001001",
+      "state": "Chandigarh",
+      "district": "Chandigarh",
+      "village_ward": "Sector 17",
+      "survey_number": "17-A-1",
+      "parcel_type": "URBAN",
+      "area_sqm": 500.0,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[76.7794, 30.7333], [76.7800, 30.7333], [76.7800, 30.7339], [76.7794, 30.7339], [76.7794, 30.7333]]]
+      }
+    },
+    "essential": {
+      "ror": {
+        "owners": ["Ramesh Kumar"],
+        "khata_number": "1001",
+        "right_type": "OWNER",
+        "ownership_share": 100.0,
+        "mutation_history": ["2020-01-15: Purchased from Sunita Sharma"]
+      },
+      "registration": {
+        "deed_number": "REG-2020-551",
+        "registration_date": "2020-01-10",
+        "transaction_type": "SALE",
+        "stamp_duty_paid": 250000.0,
+        "sub_office": "Chandigarh Central"
+      },
+      "zoning": {
+        "classification": "COMMERCIAL",
+        "permissible_fsi": 2.5,
+        "permitted_use": "Retail, Office"
+      },
+      "building": {
+        "sanction_number": "BLD-2021-002",
+        "approved_built_up_area": 1000.0,
+        "floors": 3,
+        "occupancy_status": "ISSUED"
+      },
+      "encumbrance": {
+        "lender": "SBI",
+        "loan_amount": 5000000.0,
+        "lien_status": "ACTIVE",
+        "validity_window": "2020-2030"
+      }
+    },
+    "additional": {
+      "utilities": {
+        "water_connection_id": "W-CH-1001",
+        "electricity_connection_id": "E-CH-1001",
+        "sewage_access": true,
+        "road_access": "METALLIC"
+      },
+      "taxation": {
+        "assessed_value": 15000000.0,
+        "annual_tax": 30000.0,
+        "payment_status": "PAID",
+        "arrears": 0.0
+      },
+      "valuation": {
+        "circle_rate": 12000000.0,
+        "market_value": 18000000.0
+      },
+      "environmental": {
+        "flood_zone": false,
+        "crz_flag": false,
+        "heritage_zone": true
+      }
+    }
+  },
+  {
+    "base": {
+      "ulpin": "TN002002",
+      "state": "Tamil Nadu",
+      "district": "Coimbatore",
+      "village_ward": "Thondamuthur",
+      "survey_number": "45/2A",
+      "parcel_type": "RURAL",
+      "area_sqm": 4046.86,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[76.9558, 11.0168], [76.9568, 11.0168], [76.9568, 11.0178], [76.9558, 11.0178], [76.9558, 11.0168]]]
+      }
+    },
+    "essential": {
+      "ror": {
+        "owners": ["Muthusamy", "Lakshmi"],
+        "khata_number": "PATTA-502",
+        "right_type": "OWNER",
+        "ownership_share": 50.0,
+        "mutation_history": ["2015-06-20: Inherited from Palanisamy"]
+      },
+      "registration": {
+        "deed_number": "REG-2015-882",
+        "registration_date": "2015-06-18",
+        "transaction_type": "INHERITANCE",
+        "stamp_duty_paid": 5000.0,
+        "sub_office": "Thondamuthur SRO"
+      },
+      "zoning": {
+        "classification": "AGRICULTURAL",
+        "permissible_fsi": 0.5,
+        "permitted_use": "Farming, Farmhouse"
+      },
+      "building": {
+        "sanction_number": "NONE",
+        "approved_built_up_area": 0.0,
+        "floors": 0,
+        "occupancy_status": "NOT_APPLICABLE"
+      },
+      "encumbrance": {
+        "lender": "Cooperative Bank",
+        "loan_amount": 200000.0,
+        "lien_status": "CLEARED",
+        "validity_window": "2018-2023"
+      }
+    },
+    "additional": {
+      "utilities": {
+        "water_connection_id": "W-TN-502",
+        "electricity_connection_id": "E-TN-502",
+        "sewage_access": false,
+        "road_access": "KACHCHA"
+      },
+      "taxation": {
+        "assessed_value": 2000000.0,
+        "annual_tax": 1000.0,
+        "payment_status": "PENDING",
+        "arrears": 1000.0
+      },
+      "valuation": {
+        "circle_rate": 1500000.0,
+        "market_value": 2500000.0
+      },
+      "environmental": {
+        "flood_zone": false,
+        "crz_flag": false,
+        "heritage_zone": false
+      }
+    }
+  }
+]

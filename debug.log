@@ -1,0 +1,331 @@
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/Users/kashii/.gradle/wrapper/dists/gradle-8.11.1-bin/bpt9gzteqjrbo1mjrsomdt32c/gradle-8.11.1/lib/native-platform-0.22-milestone-26.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+2026-09-12T14:57:21.847+0530 [INFO] [org.gradle.internal.nativeintegration.services.NativeServices] Initialized native services in: /Users/kashii/.gradle/native
+2026-09-12T14:57:21.872+0530 [INFO] [org.gradle.internal.nativeintegration.services.NativeServices] Initialized jansi services in: /Users/kashii/.gradle/native
+2026-09-12T14:57:21.878+0530 [LIFECYCLE] [org.gradle.launcher.cli.DebugLoggerWarningAction] 
+#############################################################################
+   WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+
+   Debug level logging will leak security sensitive information!
+
+   For more details, please refer to https://docs.gradle.org/8.11.1/userguide/logging.html#sec:debug_security in the Gradle documentation.
+#############################################################################
+
+2026-09-12T14:57:21.961+0530 [DEBUG] [org.gradle.launcher.daemon.client.DaemonClient] Executing build ecab6326-65dd-4b82-a3c8-904104c4a897 in daemon client {pid=2255}
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface utun3
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote address /fe80:0:0:0:ce81:b1c:bd2c:69e%utun3
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface utun2
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote address /fe80:0:0:0:8c0a:90fe:b6ef:4a4e%utun2
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface utun1
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote address /fe80:0:0:0:92a6:a70:4ed1:e70d%utun1
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface utun0
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote address /fe80:0:0:0:f40b:64c1:e416:ec1f%utun0
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface llw0
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote address /fe80:0:0:0:841a:ddff:fe2d:a8a4%llw0
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface awdl0
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote address /fe80:0:0:0:841a:ddff:fe2d:a8a4%awdl0
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface en0
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote address /fe80:0:0:0:18df:cb65:6e04:3db7%en0
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote address /192.168.1.112
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface lo0
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? true
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Ignoring remote address on loopback interface /fe80:0:0:0:0:0:0:1%lo0
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback address /0:0:0:0:0:0:0:1%lo0
+2026-09-12T14:57:21.964+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback address /127.0.0.1
+2026-09-12T14:57:21.974+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire shared lock on daemon addresses registry.
+2026-09-12T14:57:21.975+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on daemon addresses registry.
+2026-09-12T14:57:21.977+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
+2026-09-12T14:57:21.978+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.TcpOutgoingConnector] Attempting to connect to [3aea972b-2947-4195-ba81-81f38162b059 port:50329, addresses:[/127.0.0.1]].
+2026-09-12T14:57:21.978+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.TcpOutgoingConnector] Trying to connect to address /127.0.0.1.
+2026-09-12T14:57:21.980+0530 [DEBUG] [org.gradle.internal.remote.internal.inet.TcpOutgoingConnector] Connected to address /127.0.0.1:50329.
+2026-09-12T14:57:21.989+0530 [DEBUG] [org.gradle.launcher.daemon.client.DaemonClient] Connected to daemon DaemonInfo{pid=2210, address=[3aea972b-2947-4195-ba81-81f38162b059 port:50329, addresses:[/127.0.0.1]], state=Idle, lastBusy=1789205228503, context=DefaultDaemonContext[uid=7fc0ff9a-acea-45c9-b204-e50c02acf88d,javaHome=/Library/Java/JavaVirtualMachines/jdk-26.jdk/Contents/Home,javaVersion=26,javaVendor=Oracle Corporation,daemonRegistryDir=/Users/kashii/.gradle/daemon,pid=2210,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-Xmx2048m,-Dfile.encoding=UTF-8,-Duser.country=IN,-Duser.language=en,-Duser.variant]}. Dispatching request Build{id=ecab6326-65dd-4b82-a3c8-904104c4a897, currentDir=/Users/kashii/Downloads/landstack-skills/LandStackApp}.
+2026-09-12T14:57:21.989+0530 [DEBUG] [org.gradle.launcher.daemon.client.DaemonClientConnection] thread 3: dispatching class org.gradle.launcher.daemon.protocol.Build
+2026-09-12T14:57:21.997+0530 [DEBUG] [org.gradle.launcher.daemon.client.DaemonClient] Received result org.gradle.launcher.daemon.protocol.BuildStarted@49872d67 from daemon DaemonInfo{pid=2210, address=[3aea972b-2947-4195-ba81-81f38162b059 port:50329, addresses:[/127.0.0.1]], state=Idle, lastBusy=1789205228503, context=DefaultDaemonContext[uid=7fc0ff9a-acea-45c9-b204-e50c02acf88d,javaHome=/Library/Java/JavaVirtualMachines/jdk-26.jdk/Contents/Home,javaVersion=26,javaVendor=Oracle Corporation,daemonRegistryDir=/Users/kashii/.gradle/daemon,pid=2210,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-Xmx2048m,-Dfile.encoding=UTF-8,-Duser.country=IN,-Duser.language=en,-Duser.variant]} (build should be starting).
+2026-09-12T14:57:21.997+0530 [INFO] [org.gradle.launcher.daemon.server.exec.LogToClient] The client will now receive all logging from the daemon (pid: 2210). The daemon log file: /Users/kashii/.gradle/daemon/8.11.1/daemon-2210.out.log
+2026-09-12T14:57:21.997+0530 [INFO] [org.gradle.launcher.daemon.server.exec.LogAndCheckHealth] Starting 5th build in daemon [uptime: 58.799 secs, performance: 99%, GC rate: 0.00/s, heap usage: 1% of 2 GiB]
+2026-09-12T14:57:21.997+0530 [DEBUG] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] The daemon has started executing the build.
+2026-09-12T14:57:21.997+0530 [DEBUG] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] Executing build with daemon context: DefaultDaemonContext[uid=7fc0ff9a-acea-45c9-b204-e50c02acf88d,javaHome=/Library/Java/JavaVirtualMachines/jdk-26.jdk/Contents/Home,javaVersion=26,javaVendor=Oracle Corporation,daemonRegistryDir=/Users/kashii/.gradle/daemon,pid=2210,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-Xmx2048m,-Dfile.encoding=UTF-8,-Duser.country=IN,-Duser.language=en,-Duser.variant]
+2026-09-12T14:57:21.999+0530 [INFO] [org.gradle.internal.work.DefaultWorkerLeaseService] Using 8 worker leases.
+2026-09-12T14:57:21.999+0530 [DEBUG] [org.gradle.internal.resources.AbstractTrackedResourceLock] Daemon worker: acquired lock on worker lease
+2026-09-12T14:57:21.999+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Run build' started
+2026-09-12T14:57:22.001+0530 [DEBUG] [org.gradle.cache.internal.DefaultCacheCoordinator] Creating new cache for fileHashes, path /Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/8.11.1/fileHashes/fileHashes.bin, access org.gradle.cache.internal.DefaultCacheCoordinator@1a1c7f0a
+2026-09-12T14:57:22.001+0530 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Acquiring file lock for file hash cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/8.11.1/fileHashes)
+2026-09-12T14:57:22.002+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on file hash cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/8.11.1/fileHashes).
+2026-09-12T14:57:22.002+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on file hash cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/8.11.1/fileHashes).
+2026-09-12T14:57:22.002+0530 [DEBUG] [org.gradle.cache.internal.DefaultCacheCoordinator] Creating new cache for resourceHashesCache, path /Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/8.11.1/fileHashes/resourceHashesCache.bin, access org.gradle.cache.internal.DefaultCacheCoordinator@1a1c7f0a
+2026-09-12T14:57:22.002+0530 [DEBUG] [org.gradle.cache.internal.DefaultCacheCoordinator] Creating new cache for md5-checksums, path /Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/8.11.1/checksums/md5-checksums.bin, access org.gradle.cache.internal.DefaultCacheCoordinator@73459bf7
+2026-09-12T14:57:22.003+0530 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Acquiring file lock for checksums cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/8.11.1/checksums)
+2026-09-12T14:57:22.003+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on checksums cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/8.11.1/checksums).
+2026-09-12T14:57:22.003+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on checksums cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/8.11.1/checksums).
+2026-09-12T14:57:22.003+0530 [DEBUG] [org.gradle.cache.internal.DefaultCacheCoordinator] Creating new cache for sha1-checksums, path /Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/8.11.1/checksums/sha1-checksums.bin, access org.gradle.cache.internal.DefaultCacheCoordinator@73459bf7
+2026-09-12T14:57:22.003+0530 [DEBUG] [org.gradle.cache.internal.DefaultCacheCoordinator] Creating new cache for sha256-checksums, path /Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/8.11.1/checksums/sha256-checksums.bin, access org.gradle.cache.internal.DefaultCacheCoordinator@73459bf7
+2026-09-12T14:57:22.003+0530 [DEBUG] [org.gradle.cache.internal.DefaultCacheCoordinator] Creating new cache for sha512-checksums, path /Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/8.11.1/checksums/sha512-checksums.bin, access org.gradle.cache.internal.DefaultCacheCoordinator@73459bf7
+2026-09-12T14:57:22.004+0530 [DEBUG] [org.gradle.cache.internal.DefaultCacheCoordinator] Creating new cache for outputFiles, path /Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/buildOutputCleanup/outputFiles.bin, access org.gradle.cache.internal.DefaultCacheCoordinator@78e28140
+2026-09-12T14:57:22.005+0530 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Acquiring file lock for Build Output Cleanup Cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/buildOutputCleanup)
+2026-09-12T14:57:22.005+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on Build Output Cleanup Cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/buildOutputCleanup).
+2026-09-12T14:57:22.005+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on Build Output Cleanup Cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/buildOutputCleanup).
+2026-09-12T14:57:22.006+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire shared lock on Gradle Configuration Cache keystore (/Users/kashii/.gradle/caches/8.11.1/cc-keystore).
+2026-09-12T14:57:22.006+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on Gradle Configuration Cache keystore (/Users/kashii/.gradle/caches/8.11.1/cc-keystore).
+2026-09-12T14:57:22.006+0530 [DEBUG] [org.gradle.internal.encryption.EncryptionService] Loading keystore from /Users/kashii/.gradle/caches/8.11.1/cc-keystore/gradle.keystore
+2026-09-12T14:57:22.009+0530 [DEBUG] [org.gradle.internal.encryption.EncryptionService] Retrieved key
+2026-09-12T14:57:22.009+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on Gradle Configuration Cache keystore (/Users/kashii/.gradle/caches/8.11.1/cc-keystore).
+2026-09-12T14:57:22.009+0530 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Acquiring file lock for Configuration Cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/configuration-cache)
+2026-09-12T14:57:22.010+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on Configuration Cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/configuration-cache).
+2026-09-12T14:57:22.010+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on Configuration Cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/configuration-cache).
+2026-09-12T14:57:22.011+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Check configuration cache fingerprint' started
+2026-09-12T14:57:22.011+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Completing Build operation 'Check configuration cache fingerprint'
+2026-09-12T14:57:22.011+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Check configuration cache fingerprint' completed
+2026-09-12T14:57:22.011+0530 [LIFECYCLE] [org.gradle.configurationcache] Calculating task graph as no cached configuration is available for tasks: assembleDebug
+2026-09-12T14:57:22.011+0530 [INFO] [org.gradle.internal.watch.registry.impl.WatchableHierarchies] Now considering [/Users/kashii/Downloads/landstack-skills/LandStackApp] as hierarchies to watch
+2026-09-12T14:57:22.012+0530 [INFO] [org.gradle.tooling.internal.provider.FileSystemWatchingBuildActionRunner] Watching the file system is configured to be enabled if available
+2026-09-12T14:57:22.012+0530 [DEBUG] [org.gradle.tooling.internal.provider.FileSystemWatchingBuildActionRunner] Watching the file system computed to be enabled if available
+2026-09-12T14:57:22.012+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Build started for file system watching' started
+2026-09-12T14:57:22.012+0530 [DEBUG] [org.gradle.internal.watch.vfs.impl.DefaultWatchableFileSystemDetector] Detected apfs: / from /dev/disk3s3s1 (remote: false)
+2026-09-12T14:57:22.012+0530 [DEBUG] [org.gradle.internal.watch.vfs.impl.DefaultWatchableFileSystemDetector] Detected devfs: /dev from devfs (remote: false)
+2026-09-12T14:57:22.012+0530 [DEBUG] [org.gradle.internal.watch.vfs.impl.DefaultWatchableFileSystemDetector] Detected apfs: /System/Volumes/VM from /dev/disk3s6 (remote: false)
+2026-09-12T14:57:22.012+0530 [DEBUG] [org.gradle.internal.watch.vfs.impl.DefaultWatchableFileSystemDetector] Detected apfs: /System/Volumes/Preboot from /dev/disk3s4 (remote: false)
+2026-09-12T14:57:22.012+0530 [DEBUG] [org.gradle.internal.watch.vfs.impl.DefaultWatchableFileSystemDetector] Detected apfs: /System/Volumes/Update from /dev/disk3s2 (remote: false)
+2026-09-12T14:57:22.012+0530 [DEBUG] [org.gradle.internal.watch.vfs.impl.DefaultWatchableFileSystemDetector] Detected apfs: /System/Volumes/xarts from /dev/disk1s2 (remote: false)
+2026-09-12T14:57:22.012+0530 [DEBUG] [org.gradle.internal.watch.vfs.impl.DefaultWatchableFileSystemDetector] Detected apfs: /System/Volumes/iSCPreboot from /dev/disk1s1 (remote: false)
+2026-09-12T14:57:22.012+0530 [DEBUG] [org.gradle.internal.watch.vfs.impl.DefaultWatchableFileSystemDetector] Detected apfs: /System/Volumes/Hardware from /dev/disk1s3 (remote: false)
+2026-09-12T14:57:22.012+0530 [DEBUG] [org.gradle.internal.watch.vfs.impl.DefaultWatchableFileSystemDetector] Detected apfs: /System/Volumes/Data from /dev/disk3s1 (remote: false)
+2026-09-12T14:57:22.013+0530 [DEBUG] [org.gradle.internal.watch.vfs.impl.DefaultWatchableFileSystemDetector] Detected autofs: /System/Volumes/Data/home from map auto_home (remote: true)
+2026-09-12T14:57:22.013+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Completing Build operation 'Build started for file system watching'
+2026-09-12T14:57:22.013+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Build started for file system watching' completed
+2026-09-12T14:57:22.013+0530 [INFO] [org.gradle.tooling.internal.provider.FileSystemWatchingBuildActionRunner] File system watching is active
+2026-09-12T14:57:22.019+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InitScripts","at":2,"sn":0}
+2026-09-12T14:57:22.019+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InitScripts.fingerprints","at":90,"sn":1}
+2026-09-12T14:57:22.019+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"java.util.ArrayList","at":91,"sn":2}
+2026-09-12T14:57:22.019+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"java.util.ArrayList","at":92,"sn":3}
+2026-09-12T14:57:22.019+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InitScripts.fingerprints","at":92,"sn":4}
+2026-09-12T14:57:22.019+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InitScripts","at":92,"sn":5}
+2026-09-12T14:57:22.019+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$GradleEnvironment","at":94,"sn":6}
+2026-09-12T14:57:22.019+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$GradleEnvironment.gradleUserHomeDir","at":188,"sn":7}
+2026-09-12T14:57:22.019+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"java.io.File","at":189,"sn":8}
+2026-09-12T14:57:22.019+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"java.io.File","at":211,"sn":9}
+2026-09-12T14:57:22.019+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$GradleEnvironment.gradleUserHomeDir","at":211,"sn":10}
+2026-09-12T14:57:22.019+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$GradleEnvironment.ignoreInputsInConfigurationCacheTaskGraphWriting","at":211,"sn":11}
+2026-09-12T14:57:22.020+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"java.lang.Boolean","at":212,"sn":12}
+2026-09-12T14:57:22.020+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"java.lang.Boolean","at":213,"sn":13}
+2026-09-12T14:57:22.020+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$GradleEnvironment.ignoreInputsInConfigurationCacheTaskGraphWriting","at":213,"sn":14}
+2026-09-12T14:57:22.020+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$GradleEnvironment.ignoredFileSystemCheckInputPaths","at":213,"sn":15}
+2026-09-12T14:57:22.020+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$GradleEnvironment.ignoredFileSystemCheckInputPaths","at":218,"sn":16}
+2026-09-12T14:57:22.020+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$GradleEnvironment.instrumentationAgentUsed","at":218,"sn":17}
+2026-09-12T14:57:22.020+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"java.lang.Boolean","at":219,"sn":18}
+2026-09-12T14:57:22.020+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"java.lang.Boolean","at":220,"sn":19}
+2026-09-12T14:57:22.020+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$GradleEnvironment.instrumentationAgentUsed","at":220,"sn":20}
+2026-09-12T14:57:22.020+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$GradleEnvironment.jvm","at":220,"sn":21}
+2026-09-12T14:57:22.020+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"java.lang.String","at":221,"sn":22}
+2026-09-12T14:57:22.020+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"java.lang.String","at":289,"sn":23}
+2026-09-12T14:57:22.020+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$GradleEnvironment.jvm","at":289,"sn":24}
+2026-09-12T14:57:22.020+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$GradleEnvironment.startParameterProperties","at":289,"sn":25}
+2026-09-12T14:57:22.020+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"java.util.LinkedHashMap","at":290,"sn":26}
+2026-09-12T14:57:22.020+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"java.util.LinkedHashMap","at":291,"sn":27}
+2026-09-12T14:57:22.020+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$GradleEnvironment.startParameterProperties","at":291,"sn":28}
+2026-09-12T14:57:22.020+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$GradleEnvironment","at":291,"sn":29}
+2026-09-12T14:57:22.021+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Load build' started
+2026-09-12T14:57:22.021+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile","at":293,"sn":30}
+2026-09-12T14:57:22.021+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.file","at":379,"sn":31}
+2026-09-12T14:57:22.021+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"java.io.File","at":380,"sn":32}
+2026-09-12T14:57:22.021+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"java.io.File","at":452,"sn":33}
+2026-09-12T14:57:22.021+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.file","at":452,"sn":34}
+2026-09-12T14:57:22.021+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.hash","at":452,"sn":35}
+2026-09-12T14:57:22.021+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.hash.HashCode$HashCode128","at":453,"sn":36}
+2026-09-12T14:57:22.021+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.hash.HashCode$HashCode128","at":470,"sn":37}
+2026-09-12T14:57:22.021+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.hash","at":470,"sn":38}
+2026-09-12T14:57:22.021+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile","at":470,"sn":39}
+2026-09-12T14:57:22.021+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile","at":472,"sn":40}
+2026-09-12T14:57:22.021+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.file","at":475,"sn":41}
+2026-09-12T14:57:22.021+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"java.io.File","at":476,"sn":42}
+2026-09-12T14:57:22.022+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"java.io.File","at":552,"sn":43}
+2026-09-12T14:57:22.022+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.file","at":552,"sn":44}
+2026-09-12T14:57:22.022+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.hash","at":552,"sn":45}
+2026-09-12T14:57:22.022+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.hash.HashCode$HashCode128","at":553,"sn":46}
+2026-09-12T14:57:22.022+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.hash.HashCode$HashCode128","at":570,"sn":47}
+2026-09-12T14:57:22.022+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.hash","at":570,"sn":48}
+2026-09-12T14:57:22.022+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile","at":570,"sn":49}
+2026-09-12T14:57:22.022+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile","at":572,"sn":50}
+2026-09-12T14:57:22.022+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.file","at":575,"sn":51}
+2026-09-12T14:57:22.022+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"java.io.File","at":576,"sn":52}
+2026-09-12T14:57:22.022+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"java.io.File","at":690,"sn":53}
+2026-09-12T14:57:22.022+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.file","at":690,"sn":54}
+2026-09-12T14:57:22.022+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.hash","at":690,"sn":55}
+2026-09-12T14:57:22.022+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.hash.HashCode$HashCode128","at":691,"sn":56}
+2026-09-12T14:57:22.022+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.hash.HashCode$HashCode128","at":708,"sn":57}
+2026-09-12T14:57:22.022+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.hash","at":708,"sn":58}
+2026-09-12T14:57:22.022+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile","at":708,"sn":59}
+2026-09-12T14:57:22.023+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile","at":710,"sn":60}
+2026-09-12T14:57:22.023+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.file","at":713,"sn":61}
+2026-09-12T14:57:22.023+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"java.io.File","at":714,"sn":62}
+2026-09-12T14:57:22.023+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"java.io.File","at":788,"sn":63}
+2026-09-12T14:57:22.023+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.file","at":788,"sn":64}
+2026-09-12T14:57:22.023+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.hash","at":788,"sn":65}
+2026-09-12T14:57:22.023+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.hash.HashCode$HashCode128","at":789,"sn":66}
+2026-09-12T14:57:22.023+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.hash.HashCode$HashCode128","at":806,"sn":67}
+2026-09-12T14:57:22.023+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.hash","at":806,"sn":68}
+2026-09-12T14:57:22.023+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile","at":806,"sn":69}
+2026-09-12T14:57:22.023+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile","at":808,"sn":70}
+2026-09-12T14:57:22.023+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.file","at":811,"sn":71}
+2026-09-12T14:57:22.023+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"java.io.File","at":812,"sn":72}
+2026-09-12T14:57:22.023+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"java.io.File","at":852,"sn":73}
+2026-09-12T14:57:22.023+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.file","at":852,"sn":74}
+2026-09-12T14:57:22.023+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.hash","at":852,"sn":75}
+2026-09-12T14:57:22.023+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.hash.HashCode$HashCode128","at":853,"sn":76}
+2026-09-12T14:57:22.024+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.hash.HashCode$HashCode128","at":870,"sn":77}
+2026-09-12T14:57:22.024+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.hash","at":870,"sn":78}
+2026-09-12T14:57:22.024+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile","at":870,"sn":79}
+2026-09-12T14:57:22.024+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$EnvironmentVariablesPrefixedBy","at":872,"sn":80}
+2026-09-12T14:57:22.024+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$EnvironmentVariablesPrefixedBy.prefix","at":979,"sn":81}
+2026-09-12T14:57:22.024+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"java.lang.String","at":980,"sn":82}
+2026-09-12T14:57:22.024+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"java.lang.String","at":1000,"sn":83}
+2026-09-12T14:57:22.024+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$EnvironmentVariablesPrefixedBy.prefix","at":1000,"sn":84}
+2026-09-12T14:57:22.024+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$EnvironmentVariablesPrefixedBy.snapshot","at":1000,"sn":85}
+2026-09-12T14:57:22.024+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"java.util.LinkedHashMap","at":1001,"sn":86}
+2026-09-12T14:57:22.024+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"java.util.LinkedHashMap","at":1002,"sn":87}
+2026-09-12T14:57:22.024+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$EnvironmentVariablesPrefixedBy.snapshot","at":1002,"sn":88}
+2026-09-12T14:57:22.024+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$EnvironmentVariablesPrefixedBy","at":1002,"sn":89}
+2026-09-12T14:57:22.024+0530 [DEBUG] [org.gradle.initialization.properties.DefaultProjectPropertiesLoader] Found env project properties: []
+2026-09-12T14:57:22.025+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$SystemPropertiesPrefixedBy","at":1004,"sn":90}
+2026-09-12T14:57:22.025+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$SystemPropertiesPrefixedBy.prefix","at":1107,"sn":91}
+2026-09-12T14:57:22.025+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"java.lang.String","at":1108,"sn":92}
+2026-09-12T14:57:22.025+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"java.lang.String","at":1128,"sn":93}
+2026-09-12T14:57:22.025+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$SystemPropertiesPrefixedBy.prefix","at":1128,"sn":94}
+2026-09-12T14:57:22.025+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$SystemPropertiesPrefixedBy.snapshot","at":1128,"sn":95}
+2026-09-12T14:57:22.025+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"java.util.LinkedHashMap","at":1129,"sn":96}
+2026-09-12T14:57:22.025+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"java.util.LinkedHashMap","at":1130,"sn":97}
+2026-09-12T14:57:22.025+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$SystemPropertiesPrefixedBy.snapshot","at":1130,"sn":98}
+2026-09-12T14:57:22.025+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$SystemPropertiesPrefixedBy","at":1130,"sn":99}
+2026-09-12T14:57:22.025+0530 [DEBUG] [org.gradle.initialization.properties.DefaultProjectPropertiesLoader] Found system project properties: []
+2026-09-12T14:57:22.025+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Evaluate settings' started
+2026-09-12T14:57:22.026+0530 [DEBUG] [org.gradle.cache.internal.DefaultCacheCoordinator] Creating new cache for workingDirs, path /Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/8.11.1/vcsMetadata/workingDirs.bin, access org.gradle.cache.internal.DefaultCacheCoordinator@6f397d7d
+2026-09-12T14:57:22.027+0530 [DEBUG] [org.gradle.api.internal.artifacts.mvnsettings.DefaultLocalMavenRepositoryLocator] No local repository in Settings file defined. Using default path: /Users/kashii/.m2/repository
+2026-09-12T14:57:22.028+0530 [DEBUG] [org.gradle.cache.internal.DefaultCacheCoordinator] Creating new cache for md-rule, path /Users/kashii/.gradle/caches/8.11.1/md-rule/md-rule.bin, access org.gradle.cache.internal.DefaultCacheCoordinator@1d53ac4c
+2026-09-12T14:57:22.028+0530 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Acquiring file lock for cache directory md-rule (/Users/kashii/.gradle/caches/8.11.1/md-rule)
+2026-09-12T14:57:22.028+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on cache directory md-rule (/Users/kashii/.gradle/caches/8.11.1/md-rule).
+2026-09-12T14:57:22.028+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on cache directory md-rule (/Users/kashii/.gradle/caches/8.11.1/md-rule).
+2026-09-12T14:57:22.029+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile","at":1132,"sn":100}
+2026-09-12T14:57:22.029+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.file","at":1135,"sn":101}
+2026-09-12T14:57:22.029+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"java.io.File","at":1136,"sn":102}
+2026-09-12T14:57:22.029+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"java.io.File","at":1225,"sn":103}
+2026-09-12T14:57:22.029+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.file","at":1225,"sn":104}
+2026-09-12T14:57:22.029+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.hash","at":1225,"sn":105}
+2026-09-12T14:57:22.029+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"O","frame":"org.gradle.internal.hash.HashCode$HashCode128","at":1226,"sn":106}
+2026-09-12T14:57:22.029+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.hash.HashCode$HashCode128","at":1243,"sn":107}
+2026-09-12T14:57:22.029+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile.hash","at":1243,"sn":108}
+2026-09-12T14:57:22.029+0530 [DEBUG] [org.gradle.configurationcache] {"profile":"build fingerprint","type":"C","frame":"org.gradle.internal.cc.impl.fingerprint.ConfigurationCacheFingerprint$InputFile","at":1243,"sn":109}
+2026-09-12T14:57:22.029+0530 [DEBUG] [org.gradle.cache.internal.DefaultCacheCoordinator] Creating new cache for md-supplier, path /Users/kashii/.gradle/caches/8.11.1/md-supplier/md-supplier.bin, access org.gradle.cache.internal.DefaultCacheCoordinator@5654dcc6
+2026-09-12T14:57:22.029+0530 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Acquiring file lock for cache directory md-supplier (/Users/kashii/.gradle/caches/8.11.1/md-supplier)
+2026-09-12T14:57:22.029+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on cache directory md-supplier (/Users/kashii/.gradle/caches/8.11.1/md-supplier).
+2026-09-12T14:57:22.030+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on cache directory md-supplier (/Users/kashii/.gradle/caches/8.11.1/md-supplier).
+2026-09-12T14:57:22.030+0530 [DEBUG] [org.gradle.internal.locking.LockFileReaderWriter] Lockfiles root: /Users/kashii/Downloads/landstack-skills/LandStackApp/gradle/dependency-locks
+2026-09-12T14:57:22.030+0530 [INFO] [org.gradle.internal.buildevents.BuildLogger] Starting Build
+2026-09-12T14:57:22.030+0530 [DEBUG] [org.gradle.internal.buildevents.BuildLogger] Gradle user home: /Users/kashii/.gradle
+2026-09-12T14:57:22.031+0530 [DEBUG] [org.gradle.internal.buildevents.BuildLogger] Current dir: /Users/kashii/Downloads/landstack-skills/LandStackApp
+2026-09-12T14:57:22.031+0530 [DEBUG] [org.gradle.internal.buildevents.BuildLogger] Settings file: null
+2026-09-12T14:57:22.031+0530 [DEBUG] [org.gradle.internal.buildevents.BuildLogger] Build file: null
+2026-09-12T14:57:22.032+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Apply settings file 'settings.gradle.kts' to settings 'LandStackApp'' started
+2026-09-12T14:57:22.032+0530 [DEBUG] [org.gradle.kotlin.dsl.provider.KotlinScriptPlugin] Applying Kotlin script to settings 'LandStackApp'
+2026-09-12T14:57:22.037+0530 [DEBUG] [org.gradle.api.internal.runtimeshaded.RuntimeShadedJarFactory] Using Gradle runtime shaded JAR file: /Users/kashii/.gradle/caches/8.11.1/generated-gradle-jars/gradle-api-8.11.1.jar
+2026-09-12T14:57:22.038+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Identifying work' started
+2026-09-12T14:57:22.039+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Completing Build operation 'Identifying work'
+2026-09-12T14:57:22.039+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Identifying work' completed
+2026-09-12T14:57:22.039+0530 [DEBUG] [org.gradle.internal.vfs.impl.AbstractVirtualFileSystem] Invalidating VFS paths: [/Users/kashii/.gradle/caches/8.11.1/kotlin-dsl/scripts/6165573aafae61b98a8e530133950881-2206193d-e049-422b-b19c-5692c3c110d4]
+2026-09-12T14:57:22.039+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Snapshot inputs and outputs before executing Kotlin DSL script compilation (Settings/TopLevel/stage1)' started
+2026-09-12T14:57:22.039+0530 [DEBUG] [org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep] Implementation for Kotlin DSL script compilation (Settings/TopLevel/stage1): org.gradle.kotlin.dsl.provider.StandardKotlinScriptEvaluator$KotlinScriptCompilationAndInstrumentation@a2b2739a8af778232333ab4feee22435
+2026-09-12T14:57:22.039+0530 [DEBUG] [org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep] Additional implementations for Kotlin DSL script compilation (Settings/TopLevel/stage1): []
+2026-09-12T14:57:22.039+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Completing Build operation 'Snapshot inputs and outputs before executing Kotlin DSL script compilation (Settings/TopLevel/stage1)'
+2026-09-12T14:57:22.040+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Snapshot inputs and outputs before executing Kotlin DSL script compilation (Settings/TopLevel/stage1)' completed
+2026-09-12T14:57:22.040+0530 [INFO] [org.gradle.internal.execution.steps.AbstractResolveCachingStateStep] Caching disabled for Kotlin DSL script compilation (Settings/TopLevel/stage1) because:
+  Build cache is disabled
+2026-09-12T14:57:22.040+0530 [DEBUG] [org.gradle.internal.vfs.impl.AbstractVirtualFileSystem] Invalidating VFS paths: [/Users/kashii/.gradle/caches/8.11.1/kotlin-dsl/scripts/6165573aafae61b98a8e530133950881-2206193d-e049-422b-b19c-5692c3c110d4/instrumented/classes, /Users/kashii/.gradle/caches/8.11.1/kotlin-dsl/scripts/6165573aafae61b98a8e530133950881-2206193d-e049-422b-b19c-5692c3c110d4/reports/gradle-intercepted-methods.report]
+2026-09-12T14:57:22.040+0530 [DEBUG] [org.gradle.internal.execution.steps.PreCreateOutputParentsStep] Ensuring directory exists for property instrumentedOutput at /Users/kashii/.gradle/caches/8.11.1/kotlin-dsl/scripts/6165573aafae61b98a8e530133950881-2206193d-e049-422b-b19c-5692c3c110d4/instrumented/classes
+2026-09-12T14:57:22.040+0530 [DEBUG] [org.gradle.internal.execution.steps.PreCreateOutputParentsStep] Ensuring parent directory exists for property propertyUpgradeReportOutput at /Users/kashii/.gradle/caches/8.11.1/kotlin-dsl/scripts/6165573aafae61b98a8e530133950881-2206193d-e049-422b-b19c-5692c3c110d4/reports/gradle-intercepted-methods.report
+2026-09-12T14:57:22.040+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Executing Kotlin DSL script compilation (Settings/TopLevel/stage1)' started
+2026-09-12T14:57:22.040+0530 [DEBUG] [org.gradle.kotlin.dsl.execution.Interpreter] Compiling Settings/TopLevel/stage1 from settings file '/Users/kashii/Downloads/landstack-skills/LandStackApp/settings.gradle.kts'
+2026-09-12T14:57:22.041+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Compile script settings.gradle.kts (CLASSPATH)' started
+2026-09-12T14:57:22.056+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Completing Build operation 'Compile script settings.gradle.kts (CLASSPATH)'
+2026-09-12T14:57:22.057+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Compile script settings.gradle.kts (CLASSPATH)' completed
+2026-09-12T14:57:22.057+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Completing Build operation 'Executing Kotlin DSL script compilation (Settings/TopLevel/stage1)'
+2026-09-12T14:57:22.057+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Executing Kotlin DSL script compilation (Settings/TopLevel/stage1)' completed
+2026-09-12T14:57:22.057+0530 [DEBUG] [org.gradle.internal.vfs.impl.AbstractVirtualFileSystem] Invalidating VFS paths: [/Users/kashii/.gradle/caches/8.11.1/kotlin-dsl/scripts/6165573aafae61b98a8e530133950881-2206193d-e049-422b-b19c-5692c3c110d4/instrumented/classes, /Users/kashii/.gradle/caches/8.11.1/kotlin-dsl/scripts/6165573aafae61b98a8e530133950881-2206193d-e049-422b-b19c-5692c3c110d4/reports/gradle-intercepted-methods.report]
+2026-09-12T14:57:22.057+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Snapshot outputs after executing Kotlin DSL script compilation (Settings/TopLevel/stage1)' started
+2026-09-12T14:57:22.057+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Completing Build operation 'Snapshot outputs after executing Kotlin DSL script compilation (Settings/TopLevel/stage1)'
+2026-09-12T14:57:22.057+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Snapshot outputs after executing Kotlin DSL script compilation (Settings/TopLevel/stage1)' completed
+2026-09-12T14:57:22.058+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Completing Build operation 'Apply settings file 'settings.gradle.kts' to settings 'LandStackApp''
+2026-09-12T14:57:22.058+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Apply settings file 'settings.gradle.kts' to settings 'LandStackApp'' completed
+2026-09-12T14:57:22.058+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Completing Build operation 'Evaluate settings'
+2026-09-12T14:57:22.058+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Evaluate settings' completed
+2026-09-12T14:57:22.058+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Completing Build operation 'Load build'
+2026-09-12T14:57:22.058+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Load build' completed
+2026-09-12T14:57:22.058+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Finish root build tree' started
+2026-09-12T14:57:22.059+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Completing Build operation 'Finish root build tree'
+2026-09-12T14:57:22.059+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Finish root build tree' completed
+2026-09-12T14:57:22.059+0530 [ERROR] [org.gradle.internal.buildevents.BuildExceptionReporter] 
+2026-09-12T14:57:22.059+0530 [ERROR] [org.gradle.internal.buildevents.BuildExceptionReporter] FAILURE: Build failed with an exception.
+2026-09-12T14:57:22.059+0530 [ERROR] [org.gradle.internal.buildevents.BuildExceptionReporter] 
+2026-09-12T14:57:22.059+0530 [ERROR] [org.gradle.internal.buildevents.BuildExceptionReporter] * What went wrong:
+2026-09-12T14:57:22.059+0530 [ERROR] [org.gradle.internal.buildevents.BuildExceptionReporter] 26.0.2.1
+2026-09-12T14:57:22.059+0530 [ERROR] [org.gradle.internal.buildevents.BuildExceptionReporter] 
+2026-09-12T14:57:22.059+0530 [ERROR] [org.gradle.internal.buildevents.BuildExceptionReporter] * Try:
+2026-09-12T14:57:22.059+0530 [ERROR] [org.gradle.internal.buildevents.BuildExceptionReporter] > Run with --stacktrace option to get the stack trace.
+2026-09-12T14:57:22.059+0530 [ERROR] [org.gradle.internal.buildevents.BuildExceptionReporter] > Run with --scan to get full insights.
+2026-09-12T14:57:22.059+0530 [ERROR] [org.gradle.internal.buildevents.BuildExceptionReporter] > Get more help at https://help.gradle.org.
+2026-09-12T14:57:22.059+0530 [ERROR] [org.gradle.internal.buildevents.BuildResultLogger] 
+2026-09-12T14:57:22.060+0530 [ERROR] [org.gradle.internal.buildevents.BuildResultLogger] BUILD FAILED in 467ms
+2026-09-12T14:57:22.060+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Build finished for file system watching' started
+2026-09-12T14:57:22.060+0530 [INFO] [org.gradle.internal.watch.registry.impl.HierarchicalFileWatcherUpdater] Watched directory hierarchies: [/Users/kashii/Downloads/landstack-skills/LandStackApp]
+2026-09-12T14:57:22.060+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Completing Build operation 'Build finished for file system watching'
+2026-09-12T14:57:22.060+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Build finished for file system watching' completed
+2026-09-12T14:57:22.060+0530 [WARN] [org.gradle.internal.cc.impl.problems.ConfigurationCacheProblems] Configuration cache entry stored.
+2026-09-12T14:57:22.061+0530 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Releasing file lock for cache directory md-supplier (/Users/kashii/.gradle/caches/8.11.1/md-supplier)
+2026-09-12T14:57:22.061+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on cache directory md-supplier (/Users/kashii/.gradle/caches/8.11.1/md-supplier).
+2026-09-12T14:57:22.061+0530 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Releasing file lock for Build Output Cleanup Cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/buildOutputCleanup)
+2026-09-12T14:57:22.061+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on Build Output Cleanup Cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/buildOutputCleanup).
+2026-09-12T14:57:22.061+0530 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Releasing file lock for cache directory md-rule (/Users/kashii/.gradle/caches/8.11.1/md-rule)
+2026-09-12T14:57:22.062+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on cache directory md-rule (/Users/kashii/.gradle/caches/8.11.1/md-rule).
+2026-09-12T14:57:22.062+0530 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.store.ResolutionResultsStoreFactory] Deleted 0 resolution results binary files in 0.0 secs
+2026-09-12T14:57:22.062+0530 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Releasing file lock for Configuration Cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/configuration-cache)
+2026-09-12T14:57:22.062+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on Configuration Cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/configuration-cache).
+2026-09-12T14:57:22.062+0530 [DEBUG] [org.gradle.cache.internal.DefaultCacheCleanupExecutor] Configuration Cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/configuration-cache) has last been fully cleaned up 0 hours ago
+2026-09-12T14:57:22.062+0530 [DEBUG] [org.gradle.cache.internal.DefaultCacheCleanupExecutor] Skipping cleanup for Configuration Cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/configuration-cache) as it is not yet due
+2026-09-12T14:57:22.062+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Completing Build operation 'Run build'
+2026-09-12T14:57:22.062+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Run build' completed
+2026-09-12T14:57:22.062+0530 [DEBUG] [org.gradle.internal.resources.AbstractTrackedResourceLock] Daemon worker: released lock on worker lease
+2026-09-12T14:57:22.063+0530 [DEBUG] [org.gradle.deployment.internal.DefaultDeploymentRegistry] Stopping 0 deployment handles
+2026-09-12T14:57:22.063+0530 [DEBUG] [org.gradle.deployment.internal.DefaultDeploymentRegistry] Stopped deployment handles
+2026-09-12T14:57:22.064+0530 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Releasing file lock for file hash cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/8.11.1/fileHashes)
+2026-09-12T14:57:22.064+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on file hash cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/8.11.1/fileHashes).
+2026-09-12T14:57:22.064+0530 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Releasing file lock for checksums cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/8.11.1/checksums)
+2026-09-12T14:57:22.064+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on checksums cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/8.11.1/checksums).
+2026-09-12T14:57:22.065+0530 [DEBUG] [org.gradle.cache.internal.DefaultCacheCoordinator] Cache Compressed Files Expansion Cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/8.11.1/expanded) was closed 0 times.
+2026-09-12T14:57:22.065+0530 [DEBUG] [org.gradle.cache.internal.DefaultCacheCleanupExecutor] VCS Checkout Cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/vcs-1) has last been fully cleaned up 0 hours ago
+2026-09-12T14:57:22.065+0530 [DEBUG] [org.gradle.cache.internal.DefaultCacheCleanupExecutor] Skipping cleanup for VCS Checkout Cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/vcs-1) as it is not yet due
+2026-09-12T14:57:22.065+0530 [DEBUG] [org.gradle.cache.internal.DefaultCacheCoordinator] Cache VCS Checkout Cache (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/vcs-1) was closed 0 times.
+2026-09-12T14:57:22.065+0530 [DEBUG] [org.gradle.cache.internal.DefaultCacheCoordinator] Cache VCS metadata (/Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle/8.11.1/vcsMetadata) was closed 0 times.
+2026-09-12T14:57:22.065+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Deleting unused version-specific caches in /Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle' started
+2026-09-12T14:57:22.065+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Completing Build operation 'Deleting unused version-specific caches in /Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle'
+2026-09-12T14:57:22.065+0530 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationRunner] Build operation 'Deleting unused version-specific caches in /Users/kashii/Downloads/landstack-skills/LandStackApp/.gradle' completed
+2026-09-12T14:57:22.070+0530 [DEBUG] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] The daemon has finished executing the build.
+2026-09-12T14:57:22.088+0530 [DEBUG] [org.gradle.launcher.daemon.client.DaemonClientConnection] thread 3: dispatching class org.gradle.launcher.daemon.protocol.CloseInput
+2026-09-12T14:57:22.101+0530 [DEBUG] [org.gradle.launcher.daemon.client.DaemonClient] Received result Success[value=org.gradle.launcher.exec.BuildActionResult@5f7b97da] from daemon DaemonInfo{pid=2210, address=[3aea972b-2947-4195-ba81-81f38162b059 port:50329, addresses:[/127.0.0.1]], state=Idle, lastBusy=1789205228503, context=DefaultDaemonContext[uid=7fc0ff9a-acea-45c9-b204-e50c02acf88d,javaHome=/Library/Java/JavaVirtualMachines/jdk-26.jdk/Contents/Home,javaVersion=26,javaVendor=Oracle Corporation,daemonRegistryDir=/Users/kashii/.gradle/daemon,pid=2210,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-Xmx2048m,-Dfile.encoding=UTF-8,-Duser.country=IN,-Duser.language=en,-Duser.variant]} (build should be done).
+2026-09-12T14:57:22.102+0530 [DEBUG] [org.gradle.launcher.daemon.client.DaemonClientConnection] thread 3: dispatching class org.gradle.launcher.daemon.protocol.Finished
+2026-09-12T14:57:22.102+0530 [DEBUG] [org.gradle.launcher.daemon.client.DaemonClientConnection] thread 3: connection stop
+2026-09-12T14:57:22.103+0530 [LIFECYCLE] [org.gradle.launcher.cli.DebugLoggerWarningAction] 
+#############################################################################
+   WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+
+   Debug level logging will leak security sensitive information!
+
+   For more details, please refer to https://docs.gradle.org/8.11.1/userguide/logging.html#sec:debug_security in the Gradle documentation.
+#############################################################################
+

@@ -1,4 +1,4 @@
-package com.example.landsorter.theme
+package com.govtech.landstack.theme
 
 import androidx.compose.ui.graphics.Color
 

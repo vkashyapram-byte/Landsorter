@@ -2,15 +2,17 @@ plugins {
   alias(libs.plugins.android.application)
   alias(libs.plugins.compose.compiler)
   alias(libs.plugins.kotlin.serialization)
+  alias(libs.plugins.hilt)
+  alias(libs.plugins.ksp)
 }
 
 android {
-    namespace = "com.example.landsorter"
-    compileSdk = 36
+    namespace = "com.govtech.landstack"
+    compileSdk = 34
     defaultConfig {
-        applicationId = "com.example.landsorter"
-        minSdk = 24
-        targetSdk = 36
+        applicationId = "com.govtech.landstack"
+        minSdk = 26
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
     }
@@ -25,6 +27,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+
     buildFeatures {
       compose = true
       aidl = false
@@ -37,10 +40,6 @@ android {
         excludes += "/META-INF/{AL2.0,LGPL2.1}"
       }
     }
-}
-
-kotlin {
-    jvmToolchain(17)
 }
 
 dependencies {
@@ -78,14 +77,31 @@ dependencies {
   androidTestImplementation(libs.androidx.test.espresso.core)
 
   // Navigation
-  implementation(libs.androidx.navigation3.ui)
-  implementation(libs.androidx.navigation3.runtime)
-  implementation(libs.androidx.lifecycle.viewmodel.navigation3)
+  implementation(libs.navigation.compose)
+  
+  // Hilt
+  implementation(libs.hilt.android)
+  ksp(libs.hilt.compiler)
+  implementation(libs.hilt.navigation.compose)
 
-  // Supabase & Ktor
-  implementation(libs.supabase.postgrest)
-  implementation(libs.ktor.client.android)
+  // Room
+  implementation(libs.room.runtime)
+  ksp(libs.room.compiler)
+  implementation(libs.room.ktx)
 
-  // Location
+  // MapLibre
+  implementation(libs.maplibre.android)
+  // implementation(libs.maplibre.compose)
+
+  // Retrofit & Serialization
+  implementation(libs.retrofit)
+  implementation(libs.retrofit.kotlinx.serialization)
+  implementation(libs.kotlinx.serialization.json)
+
+  // Vico Charts
+  // implementation(libs.vico.compose)
+  // implementation(libs.vico.compose.m3)
+
+  // Location / GNSS
   implementation(libs.play.services.location)
 }
