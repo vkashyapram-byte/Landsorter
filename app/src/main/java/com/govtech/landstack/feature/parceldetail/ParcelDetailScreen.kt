@@ -80,14 +80,22 @@ fun ParcelDetailScreen(
                 },
                 actions = {
                     if (anomaly) {
-                        Badge(containerColor = MaterialTheme.colorScheme.error) {
-                            Text("⚠ MULTIPLE REGS")
+                        Surface(
+                            color = MaterialTheme.colorScheme.error,
+                            shape = RoundedCornerShape(12.dp),
+                            modifier = Modifier.padding(horizontal = 4.dp, vertical = 2.dp)
+                        ) {
+                            Text("⚠ MULTIPLE REGS", modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp), style = MaterialTheme.typography.labelSmall)
                         }
                     }
                     if (disputes.any { it.status == "active" }) {
                         Spacer(modifier = Modifier.width(8.dp))
-                        Badge(containerColor = MaterialTheme.colorScheme.error) {
-                            Text("⚠ DISPUTE")
+                        Surface(
+                            color = MaterialTheme.colorScheme.error,
+                            shape = RoundedCornerShape(12.dp),
+                            modifier = Modifier.padding(horizontal = 4.dp, vertical = 2.dp)
+                        ) {
+                            Text("⚠ DISPUTE", modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp), style = MaterialTheme.typography.labelSmall)
                         }
                         Spacer(modifier = Modifier.width(8.dp))
                     }
@@ -134,7 +142,8 @@ fun ParcelDetailScreen(
                 contentColor = MaterialTheme.colorScheme.primary,
                 edgePadding = 8.dp
             ) {
-                visibleTabs.forEachIndexed { index, (title, _) ->
+                visibleTabs.forEachIndexed { index, tabInfo ->
+                    val title = tabInfo.first
                     Tab(
                         selected = selectedTabIndex == index,
                         onClick = { selectedTabIndex = index },
