@@ -8,5 +8,8 @@ data class ParcelEntity(
     @PrimaryKey val ulpin: String,
     val state: String,
     val district: String,
-    val parcelDataJson: String // Serialized full Parcel model
+    val zoningClassification: String,
+    val permittedUse: String,
+    val parcelDataJson: String, // Serialized full Parcel model
+    val updatedAt: String
 )

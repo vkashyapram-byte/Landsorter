@@ -1,0 +1,11 @@
+## This file is an example of what your local.properties should look like.
+## Make a copy of this file and name it 'local.properties'
+#
+# Location of the SDK. This is only used by Gradle.
+# For customization when using a Version Control System, please read the
+# header note.
+sdk.dir=/Users/kashii/Library/Android/sdk
+
+# Supabase Settings
+supabaseUrl=YOUR_SUPABASE_URL_HERE
+supabaseAnonKey=YOUR_SUPABASE_ANON_KEY_HERE

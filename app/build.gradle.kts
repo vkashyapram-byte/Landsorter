@@ -1,10 +1,22 @@
+import java.util.Properties
+
 plugins {
   alias(libs.plugins.android.application)
+  id("org.jetbrains.kotlin.android")
   alias(libs.plugins.compose.compiler)
   alias(libs.plugins.kotlin.serialization)
   alias(libs.plugins.hilt)
   alias(libs.plugins.ksp)
 }
+
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(localPropertiesFile.inputStream())
+}
+
+val supabaseUrl = localProperties.getProperty("supabaseUrl") ?: ""
+val supabaseAnonKey = localProperties.getProperty("supabaseAnonKey") ?: ""
 
 android {
     namespace = "com.govtech.landstack"
@@ -15,6 +27,8 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+        buildConfigField("String", "SUPABASE_URL", "\"${supabaseUrl}\"")
+        buildConfigField("String", "SUPABASE_ANON_KEY", "\"${supabaseAnonKey}\"")
     }
 
     buildTypes {
@@ -31,7 +45,7 @@ android {
     buildFeatures {
       compose = true
       aidl = false
-      buildConfig = false
+      buildConfig = true
       shaders = false
     }
 
@@ -69,6 +83,9 @@ dependencies {
   // Local tests: jUnit, coroutines, Android runner
   testImplementation(libs.junit)
   testImplementation(libs.kotlinx.coroutines.test)
+  testImplementation("org.robolectric:robolectric:4.11.1")
+  testImplementation("androidx.work:work-testing:2.9.0")
+  testImplementation("androidx.room:room-testing:2.6.1")
 
   // Instrumented tests: jUnit rules and runners
   androidTestImplementation(libs.androidx.test.core)
@@ -83,15 +100,16 @@ dependencies {
   implementation(libs.hilt.android)
   ksp(libs.hilt.compiler)
   implementation(libs.hilt.navigation.compose)
+  implementation(libs.androidx.hilt.work)
+  ksp(libs.androidx.hilt.compiler)
 
   // Room
   implementation(libs.room.runtime)
   ksp(libs.room.compiler)
   implementation(libs.room.ktx)
 
-  // MapLibre
-  implementation(libs.maplibre.android)
-  // implementation(libs.maplibre.compose)
+  // OpenStreetMap
+  implementation(libs.osmdroid.android)
 
   // Retrofit & Serialization
   implementation(libs.retrofit)
@@ -109,4 +127,6 @@ dependencies {
   implementation(libs.ktor.client.core)
   implementation(libs.ktor.client.cio)
   implementation(libs.supabase.postgrest)
+  implementation(libs.supabase.auth)
+  implementation(libs.work.runtime.ktx)
 }

@@ -10,21 +10,44 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = IndigoLight,
+    onPrimary = IndigoContainerDark,
+    primaryContainer = IndigoDark,
+    onPrimaryContainer = IndigoContainerLight,
+    secondary = MintLight,
+    onSecondary = MintContainerDark,
+    secondaryContainer = MintDark,
+    onSecondaryContainer = MintContainerLight,
+    background = BackgroundDark,
+    surface = SurfaceDark,
+    error = ErrorRedLight,
+    onError = ErrorRedDark,
+    errorContainer = ErrorRedDark,
+    onErrorContainer = ErrorRedLight
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = IndigoPrimary,
+    onPrimary = Color.White,
+    primaryContainer = IndigoContainerLight,
+    onPrimaryContainer = IndigoContainerDark,
+    secondary = MintSecondary,
+    onSecondary = Color.Black,
+    secondaryContainer = MintContainerLight,
+    onSecondaryContainer = MintContainerDark,
+    background = BackgroundLight,
+    surface = SurfaceLight,
+    error = ErrorRed,
+    onError = Color.White,
+    errorContainer = ErrorRedLight,
+    onErrorContainer = ErrorRedDark
 )
 
 @Composable

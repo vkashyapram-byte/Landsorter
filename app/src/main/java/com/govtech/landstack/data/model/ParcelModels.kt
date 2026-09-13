@@ -15,6 +15,7 @@ data class BaseLayer(
     val ulpin: String,
     val state: String,
     val district: String,
+    val taluk: String? = null,
     @SerialName("village_ward") val villageWard: String,
     @SerialName("survey_number") val surveyNumber: String,
     @SerialName("parcel_type") val parcelType: String,
@@ -33,8 +34,17 @@ data class EssentialLayer(
     val ror: RecordOfRights,
     val registration: Registration,
     val zoning: Zoning,
+    val planning: Planning? = null,
     val building: Building,
     val encumbrance: Encumbrance
+)
+
+@Serializable
+data class Planning(
+    @SerialName("commercial_use") val commercialUse: Boolean = false,
+    @SerialName("industrial_use") val industrialUse: Boolean = false,
+    @SerialName("road_reservation") val roadReservation: Boolean = false,
+    @SerialName("development_zone") val developmentZone: String = "Unknown"
 )
 
 @Serializable
