@@ -154,6 +154,9 @@ interface RestrictionDao {
     @Query("SELECT * FROM parcel_restrictions WHERE ulpin = :ulpin")
     fun getRestrictionsByUlpin(ulpin: String): Flow<List<RestrictionEntity>>
 
+    @Query("SELECT * FROM parcel_restrictions WHERE ulpin = :ulpin")
+    suspend fun getRestrictionsByUlpinSync(ulpin: String): List<RestrictionEntity>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertRestrictions(restrictions: List<RestrictionEntity>)
 }

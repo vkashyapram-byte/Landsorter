@@ -111,7 +111,7 @@ fun MainNavigation() {
                         )
                         NavigationDrawerItem(
                             icon = { Icon(Icons.Default.Person, contentDescription = null) },
-                            label = { Text("My property") },
+                            label = { Text("My Property") },
                             selected = navController.currentDestination?.route == "my_property",
                             onClick = { 
                                 scope.launch { drawerState.close() }
@@ -122,7 +122,7 @@ fun MainNavigation() {
                         )
                         NavigationDrawerItem(
                             icon = { Icon(Icons.Default.Add, contentDescription = null) },
-                            label = { Text("Register property") },
+                            label = { Text("Register Property") },
                             selected = navController.currentDestination?.route == "parcel/new",
                             onClick = { 
                                 scope.launch { drawerState.close() }
@@ -155,7 +155,7 @@ fun MainNavigation() {
                         )
                         NavigationDrawerItem(
                             icon = { Icon(Icons.Default.ShoppingCart, contentDescription = null) },
-                            label = { Text("TAX") },
+                            label = { Text("Tax") },
                             selected = navController.currentDestination?.route == "tax",
                             onClick = { 
                                 scope.launch { drawerState.close() }
@@ -166,7 +166,7 @@ fun MainNavigation() {
                         )
                         NavigationDrawerItem(
                             icon = { Icon(Icons.Default.Build, contentDescription = null) },
-                            label = { Text("Service req") },
+                            label = { Text("Service Request") },
                             selected = navController.currentDestination?.route == "service_requests",
                             onClick = { 
                                 scope.launch { drawerState.close() }
@@ -178,10 +178,12 @@ fun MainNavigation() {
                         NavigationDrawerItem(
                             icon = { Icon(Icons.Default.Face, contentDescription = null) }, // Placeholder icon for AI
                             label = { Text("AI Assistant") },
-                            selected = navController.currentDestination?.route == "ai_assistant",
+                            selected = navController.currentDestination?.route?.startsWith("ai_assistant") == true,
                             onClick = {
                                 scope.launch { drawerState.close() }
-                                navController.navigate("ai_assistant") { launchSingleTop = true }
+                                val ulpinArg = navController.currentBackStackEntry?.arguments?.getString("ulpin")
+                                val aiRoute = if (ulpinArg != null && ulpinArg != "new") "ai_assistant?ulpin=$ulpinArg" else "ai_assistant"
+                                navController.navigate(aiRoute) { launchSingleTop = true }
                             },
                             modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
                             shape = androidx.compose.foundation.shape.RoundedCornerShape(50)
@@ -304,8 +306,12 @@ fun MainNavigation() {
             composable("service_requests") {
                 com.govtech.landstack.feature.servicerequest.ServiceRequestScreen(onBack = { navController.popBackStack() })
             }
-            composable("ai_assistant") {
-                com.govtech.landstack.feature.aiassistant.AIAssistantScreen(onBack = { navController.popBackStack() })
+            composable(
+                "ai_assistant?ulpin={ulpin}",
+                arguments = listOf(androidx.navigation.navArgument("ulpin") { nullable = true })
+            ) { backStackEntry ->
+                val ulpin = backStackEntry.arguments?.getString("ulpin")
+                com.govtech.landstack.feature.aiassistant.AIAssistantScreen(ulpin = ulpin, onBack = { navController.popBackStack() })
             }
             composable("my_property") {
                 MyPropertyScreen(

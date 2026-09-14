@@ -12,6 +12,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -25,12 +26,12 @@ data class ChatMessage(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AIAssistantScreen(
-    onBack: () -> Unit
+    ulpin: String? = null,
+    onBack: () -> Unit,
+    viewModel: AIAssistantViewModel = hiltViewModel()
 ) {
     var query by remember { mutableStateOf("") }
-    val messages = remember { mutableStateListOf<ChatMessage>(
-        ChatMessage("Hello! I am your AI Land Assistant. You can ask me questions about parcel zoning, permitted uses, and restrictions.", false)
-    ) }
+    val messages by viewModel.messages.collectAsState()
 
     Scaffold(
         topBar = {
@@ -86,11 +87,8 @@ fun AIAssistantScreen(
                 IconButton(
                     onClick = {
                         if (query.isNotBlank()) {
-                            messages.add(ChatMessage(query, true))
-                            val q = query
+                            viewModel.handleQuery(query, ulpin)
                             query = ""
-                            // Dummy logic for answering
-                            messages.add(ChatMessage("I see you are asking about '$q'. Based on the land records, this parcel is zoned for mixed-use development, but please verify with local authorities.", false))
                         }
                     },
                     modifier = Modifier.background(MaterialTheme.colorScheme.primary, RoundedCornerShape(24.dp))

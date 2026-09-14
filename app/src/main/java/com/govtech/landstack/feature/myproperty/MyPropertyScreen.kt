@@ -17,7 +17,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.govtech.landstack.data.local.ParcelEntity
+import com.govtech.landstack.data.model.Parcel
 import com.govtech.landstack.ui.util.UiState
+import kotlinx.serialization.json.Json
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -98,6 +100,18 @@ fun MyPropertyScreen(
 
 @Composable
 fun MyPropertyCard(parcel: ParcelEntity, onClick: () -> Unit) {
+    val parcelData = try {
+        Json { ignoreUnknownKeys = true }.decodeFromString<Parcel>(parcel.parcelDataJson)
+    } catch (e: Exception) {
+        null
+    }
+    val firstCoord = parcelData?.base?.geometry?.coordinates?.firstOrNull()?.firstOrNull()
+    val gisText = if (firstCoord != null && firstCoord.size >= 2) {
+        "Lat/Lng approx: ${String.format("%.4f", firstCoord[1])}, ${String.format("%.4f", firstCoord[0])}"
+    } else {
+        "GIS data unavailable"
+    }
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -126,6 +140,12 @@ fun MyPropertyCard(parcel: ParcelEntity, onClick: () -> Unit) {
                     Text(parcel.district, style = MaterialTheme.typography.bodyMedium)
                 }
             }
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = "GIS: $gisText",
+                style = MaterialTheme.typography.bodySmall,
+                color = Color.Gray
+            )
         }
     }
 }

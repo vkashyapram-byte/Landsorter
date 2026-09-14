@@ -15,6 +15,8 @@ import com.govtech.landstack.data.local.EncumbranceEntity
 import com.govtech.landstack.data.local.DisputeEntity
 import com.govtech.landstack.data.local.RestrictionEntity
 import com.govtech.landstack.ui.components.SectionCard
+import android.widget.Toast
+import androidx.compose.ui.platform.LocalContext
 
 // =====================================================
 // Citizen Layout
@@ -30,6 +32,8 @@ fun CitizenParcelDetailContent(
     viewModel: ParcelDetailViewModel,
     ulpin: String
 ) {
+    val context = LocalContext.current
+
     // GIS & UPIN
     SectionCard(title = "GIS & Location (UPIN: $ulpin)") {
         Box(modifier = Modifier.fillMaxWidth().height(150.dp).background(Color.LightGray, RoundedCornerShape(8.dp)), contentAlignment = Alignment.Center) {
@@ -41,26 +45,31 @@ fun CitizenParcelDetailContent(
         DetailRow("Village/Ward", parcel.base.villageWard)
     }
 
-    // Record of Rights & Ownership
-    SectionCard(title = "Record of Rights") {
-        val currentOwners = owners.filter { it.effectiveTo == null }
-        if (currentOwners.isEmpty()) {
-            Text("No current owners registered.")
-        } else {
-            currentOwners.forEach { owner ->
-                DetailRow("Owner", "${owner.ownerName} (${owner.ownershipShare ?: 0.0}%)")
-            }
-        }
-        Spacer(modifier = Modifier.height(8.dp))
-        var showHistory by remember { mutableStateOf(false) }
-        Button(onClick = { showHistory = !showHistory }, modifier = Modifier.fillMaxWidth()) {
-            Text(if (showHistory) "Hide Ownership History" else "View Ownership Records & History")
-        }
-        if (showHistory) {
-            Spacer(modifier = Modifier.height(8.dp))
-            OwnershipHistoryTab(owners)
-        }
+    // Record of Rights & Ownership Buttons
+    Spacer(modifier = Modifier.height(16.dp))
+    Button(
+        onClick = { Toast.makeText(context, "Record of Rights Screen Not Implemented", Toast.LENGTH_SHORT).show() }, 
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+    ) {
+        Text("View Record of Rights")
     }
+    
+    Spacer(modifier = Modifier.height(8.dp))
+    Button(
+        onClick = { Toast.makeText(context, "Ownership Screen Not Implemented", Toast.LENGTH_SHORT).show() }, 
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+    ) {
+        Text("View Ownership & History")
+    }
+    
+    Spacer(modifier = Modifier.height(8.dp))
+    Button(
+        onClick = { Toast.makeText(context, "Building Permissions Screen Not Implemented", Toast.LENGTH_SHORT).show() }, 
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+    ) {
+        Text("View Building Permissions")
+    }
+    Spacer(modifier = Modifier.height(16.dp))
 
     // Land Use
     SectionCard(title = "Use (Zoning & Restrictions)") {
@@ -74,13 +83,6 @@ fun CitizenParcelDetailContent(
                 DetailRow("Restriction (${restriction.restrictionType})", restriction.description ?: "N/A")
             }
         }
-    }
-
-    // Building Permissions
-    SectionCard(title = "Building (Permissions & Approvals)") {
-        DetailRow("Sanction Number", parcel.essential.building.sanctionNumber ?: "N/A")
-        DetailRow("Approved Built-up Area", parcel.essential.building.approvedBuiltUpArea?.toString() ?: "N/A")
-        DetailRow("Occupancy Status", parcel.essential.building.occupancyStatus ?: "N/A")
     }
 }
 
