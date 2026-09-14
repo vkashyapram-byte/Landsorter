@@ -54,56 +54,37 @@ fun ParcelDetailScreen(
     val restrictions by viewModel.restrictions.collectAsState()
 
     // Build visible tabs based on role
-    val allTabs = listOf(
-        "Overview" to RoleAccess.PARCEL_ID,
-        "Ownership" to RoleAccess.OWNERSHIP_RECORDS,
-        "History" to RoleAccess.OWNERSHIP_HISTORY,
-        "Registration" to RoleAccess.LAND_REGISTRATION,
-        "Transactions" to RoleAccess.TRANSACTION_TRACKING,
-        "Legal" to RoleAccess.ENCUMBRANCE_RECORDS,
-        "Planning" to RoleAccess.RECORD_OF_RIGHTS,
-        "Utilities" to RoleAccess.PARCEL_ID,
-        "Documents" to RoleAccess.DOCUMENTS
-    )
-    val visibleTabs = allTabs.filter { (_, feature) -> RoleAccess.canView(role, feature) }
+    val allTabs = if (role == "Citizen") {
+        listOf(
+            "Base" to RoleAccess.PARCEL_ID,
+            "Ownership" to RoleAccess.PARCEL_ID,
+            "Records" to RoleAccess.PARCEL_ID,
+            "Building Permissions" to RoleAccess.PARCEL_ID,
+            "Taxes" to RoleAccess.PARCEL_ID,
+            "Application History" to RoleAccess.PARCEL_ID
+        )
+    } else {
+        listOf(
+            "Overview" to RoleAccess.PARCEL_ID,
+            "Ownership" to RoleAccess.OWNERSHIP_RECORDS,
+            "History" to RoleAccess.OWNERSHIP_HISTORY,
+            "Registration" to RoleAccess.LAND_REGISTRATION,
+            "Transactions" to RoleAccess.TRANSACTION_TRACKING,
+            "Legal" to RoleAccess.ENCUMBRANCE_RECORDS,
+            "Planning" to RoleAccess.RECORD_OF_RIGHTS,
+            "Utilities" to RoleAccess.PARCEL_ID,
+            "Documents" to RoleAccess.DOCUMENTS
+        )
+    }
+    val visibleTabs = allTabs.filter { (_, feature) -> role == "Citizen" || RoleAccess.canView(role, feature) }
 
     var selectedTabIndex by remember { mutableIntStateOf(0) }
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text("Parcel $ulpin") },
-                navigationIcon = {
-                    IconButton(onClick = onBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back")
-                    }
-                },
-                actions = {
-                    if (anomaly) {
-                        Surface(
-                            color = MaterialTheme.colorScheme.error,
-                            shape = RoundedCornerShape(12.dp),
-                            modifier = Modifier.padding(horizontal = 4.dp, vertical = 2.dp)
-                        ) {
-                            Text("⚠ MULTIPLE REGS", modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp), style = MaterialTheme.typography.labelSmall)
-                        }
-                    }
-                    if (disputes.any { it.status == "active" }) {
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Surface(
-                            color = MaterialTheme.colorScheme.error,
-                            shape = RoundedCornerShape(12.dp),
-                            modifier = Modifier.padding(horizontal = 4.dp, vertical = 2.dp)
-                        ) {
-                            Text("⚠ DISPUTE", modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp), style = MaterialTheme.typography.labelSmall)
-                        }
-                        Spacer(modifier = Modifier.width(8.dp))
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.background,
-                    titleContentColor = MaterialTheme.colorScheme.onBackground
-                )
+            com.govtech.landstack.ui.components.LandStackTopAppBar(
+                title = "Parcel $ulpin",
+                onNavigationIconClick = onBack
             )
         }
     ) { padding ->
@@ -136,44 +117,57 @@ fun ParcelDetailScreen(
         val parcel = (parcelState as com.govtech.landstack.ui.util.UiState.Success).data
 
         Column(modifier = Modifier.padding(padding).fillMaxSize()) {
-            ScrollableTabRow(
-                selectedTabIndex = selectedTabIndex,
-                containerColor = MaterialTheme.colorScheme.surface,
-                contentColor = MaterialTheme.colorScheme.primary,
-                edgePadding = 8.dp
-            ) {
-                visibleTabs.forEachIndexed { index, tabInfo ->
-                    val title = tabInfo.first
-                    Tab(
-                        selected = selectedTabIndex == index,
-                        onClick = { selectedTabIndex = index },
-                        text = { Text(title) }
-                    )
-                }
-            }
-
-            Box(modifier = Modifier.padding(16.dp).fillMaxSize()) {
+            if ("Citizen".equals(role, ignoreCase = true)) {
                 val scrollState = rememberScrollState()
                 Column(
-                    modifier = Modifier.verticalScroll(scrollState).fillMaxSize(),
+                    modifier = Modifier.padding(16.dp).fillMaxSize().verticalScroll(scrollState),
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    val currentTab = visibleTabs.getOrNull(selectedTabIndex)?.first ?: "Overview"
-                    when (currentTab) {
-                        "Overview" -> OverviewTabContent(
-                            parcel = parcel,
-                            hasDisputes = disputes.any { it.status == "active" },
-                            hasEncumbrances = encumbrances.any { it.resolvedAt == null && it.lienStatus?.lowercase() == "active" },
-                            hasAnomalies = anomaly
+                    CitizenParcelDetailContent(parcel, owners, encumbrances, disputes, restrictions, viewModel, ulpin)
+                }
+            } else {
+                ScrollableTabRow(
+                    selectedTabIndex = selectedTabIndex,
+                    containerColor = MaterialTheme.colorScheme.surface,
+                    contentColor = MaterialTheme.colorScheme.primary,
+                    edgePadding = 8.dp
+                ) {
+                    visibleTabs.forEachIndexed { index, tabInfo ->
+                        val title = tabInfo.first
+                        Tab(
+                            selected = selectedTabIndex == index,
+                            onClick = { selectedTabIndex = index },
+                            text = { Text(title) }
                         )
-                        "Ownership" -> OwnershipRecordsTab(owners, role, mutationLogs, viewModel, ulpin)
-                        "History" -> OwnershipHistoryTab(owners)
-                        "Registration" -> RegistrationTab(registrations, documents, role)
-                        "Transactions" -> TransactionTrackingTab(registrations)
-                        "Legal" -> LegalTabContent(encumbrances, disputes, restrictions, role)
-                        "Planning" -> PlanningTabContent(parcel)
-                        "Utilities" -> UtilitiesTabContent(parcel)
-                        "Documents" -> DocumentsTabContent(documents, viewModel)
+                    }
+                }
+
+                Box(modifier = Modifier.padding(16.dp).fillMaxSize()) {
+                    val scrollState = rememberScrollState()
+                    Column(
+                        modifier = Modifier.verticalScroll(scrollState).fillMaxSize(),
+                        verticalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        val currentTab = visibleTabs.getOrNull(selectedTabIndex)?.first ?: "Overview"
+                        when (currentTab) {
+                            "Overview", "Base" -> OverviewTabContent(
+                                parcel = parcel,
+                                hasDisputes = disputes.any { it.status == "active" },
+                                hasEncumbrances = encumbrances.any { it.resolvedAt == null && it.lienStatus?.lowercase() == "active" },
+                                hasAnomalies = anomaly
+                            )
+                            "Ownership" -> OwnershipRecordsTab(owners, role, mutationLogs, viewModel, ulpin)
+                            "History" -> OwnershipHistoryTab(owners)
+                            "Registration" -> RegistrationTab(registrations, documents, role)
+                            "Transactions" -> TransactionTrackingTab(registrations)
+                            "Legal", "Records" -> LegalTabContent(encumbrances, disputes, restrictions, role)
+                            "Planning" -> PlanningTabContent(parcel)
+                            "Utilities" -> UtilitiesTabContent(parcel)
+                            "Documents" -> DocumentsTabContent(documents, viewModel)
+                            "Building Permissions" -> BuildingPermissionsTabContent() // stub
+                            "Taxes" -> TaxesTabContent(taxRecords)
+                            "Application History" -> ApplicationHistoryTabContent() // stub
+                        }
                     }
                 }
             }
@@ -343,6 +337,7 @@ fun OwnershipRecordsTab(
     if (RoleAccess.canEdit(role, RoleAccess.OWNERSHIP_RECORDS)) {
         SectionCard(title = "Record Mutation (Admin/Registrar)") {
             var newOwner by remember { mutableStateOf("") }
+            var userEmail by remember { mutableStateOf("") }
             var khata by remember { mutableStateOf("") }
             var rightType by remember { mutableStateOf("Individual") }
             var shareStr by remember { mutableStateOf("1.0") }
@@ -357,6 +352,12 @@ fun OwnershipRecordsTab(
                 label = { Text("New Owner Name") },
                 isError = ownerError,
                 supportingText = { if (ownerError) Text("Owner name cannot be blank") },
+                modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
+            )
+            OutlinedTextField(
+                value = userEmail,
+                onValueChange = { userEmail = it },
+                label = { Text("User Email (Optional to link app account)") },
                 modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
             )
             OutlinedTextField(
@@ -394,8 +395,9 @@ fun OwnershipRecordsTab(
                     shareError = d == null || d <= 0.0 || d > 1.0
                     
                     if (!ownerError && !khataError && !shareError) {
-                        viewModel.submitOwnershipMutation(ulpin, newOwner, khata, rightType, d ?: 1.0)
+                        viewModel.submitOwnershipMutation(ulpin, newOwner, khata, rightType, d ?: 1.0, userEmail.ifBlank { null })
                         newOwner = ""
+                        userEmail = ""
                         khata = ""
                     }
                 },
@@ -877,3 +879,37 @@ fun DocumentsTabContent(documents: List<DocumentEntity>, viewModel: ParcelDetail
     }
 }
 
+@Composable
+fun BuildingPermissionsTabContent() {
+    SectionCard(title = "Building Permissions") {
+        Text("Coming soon...")
+    }
+}
+
+@Composable
+fun TaxesTabContent(taxRecords: List<TaxRecordEntity>) {
+    if (taxRecords.isEmpty()) {
+        SectionCard(title = "Tax Records") {
+            Text("No tax records found.")
+        }
+        return
+    }
+
+    SectionCard(title = "Property Taxes") {
+        taxRecords.sortedByDescending { it.taxYear }.forEach { tax ->
+            DetailRow("Year", tax.taxYear?.toString() ?: "N/A")
+            DetailRow("Annual Tax", "₹${tax.annualTax ?: 0.0}")
+            DetailRow("Status", tax.paymentStatus ?: "Unknown") {
+                StatusBadge(tax.paymentStatus ?: "unknown")
+            }
+            HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+        }
+    }
+}
+
+@Composable
+fun ApplicationHistoryTabContent() {
+    SectionCard(title = "Application History") {
+        Text("Coming soon...")
+    }
+}

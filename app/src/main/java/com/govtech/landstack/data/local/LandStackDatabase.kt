@@ -19,9 +19,11 @@ import androidx.room.TypeConverters
         RestrictionEntity::class,
         DataConflictEntity::class,
         ApplicationEntity::class,
-        ApplicationStageEntity::class
+        ApplicationStageEntity::class,
+        PropertyTransactionEntity::class,
+        ServiceRequestEntity::class
     ], 
-    version = 7, 
+    version = 8, 
     exportSchema = false
 )
 @TypeConverters(Converters::class)
@@ -36,4 +38,6 @@ abstract class LandStackDatabase : RoomDatabase() {
     abstract fun dataConflictDao(): DataConflictDao
     abstract fun applicationDao(): ApplicationDao
     abstract fun applicationStageDao(): ApplicationStageDao
+    abstract fun propertyTransactionDao(): PropertyTransactionDao
+    abstract fun serviceRequestDao(): ServiceRequestDao
 }

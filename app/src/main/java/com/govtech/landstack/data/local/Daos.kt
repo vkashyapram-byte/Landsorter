@@ -205,3 +205,33 @@ interface ApplicationStageDao {
     @Query("DELETE FROM application_stages")
     suspend fun clear()
 }
+
+@Dao
+interface PropertyTransactionDao {
+    @Query("SELECT * FROM property_transactions WHERE ulpin = :ulpin ORDER BY created_at DESC")
+    fun getTransactionsForParcel(ulpin: String): Flow<List<PropertyTransactionEntity>>
+
+    @Query("SELECT * FROM property_transactions WHERE buyer_user_id = :userId ORDER BY created_at DESC")
+    fun getTransactionsForUser(userId: String): Flow<List<PropertyTransactionEntity>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertTransactions(transactions: List<PropertyTransactionEntity>)
+
+    @Query("DELETE FROM property_transactions")
+    suspend fun clear()
+}
+
+@Dao
+interface ServiceRequestDao {
+    @Query("SELECT * FROM service_requests WHERE citizen_user_id = :userId ORDER BY created_at DESC")
+    fun getServiceRequestsForUser(userId: String): Flow<List<ServiceRequestEntity>>
+
+    @Query("SELECT * FROM service_requests ORDER BY created_at DESC")
+    fun getAllServiceRequests(): Flow<List<ServiceRequestEntity>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertServiceRequests(requests: List<ServiceRequestEntity>)
+
+    @Query("DELETE FROM service_requests")
+    suspend fun clear()
+}

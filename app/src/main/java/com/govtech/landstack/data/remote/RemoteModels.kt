@@ -166,6 +166,33 @@ data class RemoteApplication(
     @SerialName("updated_at") val updatedAt: String? = null
 )
 
+@Serializable
+data class RemotePropertyTransaction(
+    val id: Long? = null,
+    val ulpin: String,
+    @SerialName("buyer_name") val buyerName: String,
+    @SerialName("buyer_user_id") val buyerUserId: String? = null,
+    @SerialName("seller_owner_id") val sellerOwnerId: Long? = null,
+    val status: String,
+    @SerialName("initiated_by") val initiatedBy: String? = null,
+    @SerialName("created_at") val createdAt: String? = null,
+    @SerialName("updated_at") val updatedAt: String? = null
+)
+
+@Serializable
+data class RemoteServiceRequest(
+    val id: Long? = null,
+    val ulpin: String? = null,
+    @SerialName("citizen_user_id") val citizenUserId: String,
+    @SerialName("request_type") val requestType: String,
+    val description: String? = null,
+    val status: String,
+    @SerialName("handled_by") val handledBy: String? = null,
+    @SerialName("handled_at") val handledAt: String? = null,
+    @SerialName("created_at") val createdAt: String? = null,
+    @SerialName("updated_at") val updatedAt: String? = null
+)
+
 // RPC Request Models
 
 @Serializable
@@ -188,4 +215,16 @@ data class RpcResolveEncumbranceRequest(
 @Serializable
 data class RpcMarkTaxPaidRequest(
     val p_tax_record_id: Long
+)
+
+@Serializable
+data class RpcAdvancePropertyTransactionStatusRequest(
+    val p_transaction_id: Long,
+    val p_new_status: String
+)
+
+@Serializable
+data class RpcUpdateServiceRequestStatusRequest(
+    val p_request_id: Long,
+    val p_new_status: String
 )

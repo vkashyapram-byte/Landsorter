@@ -69,7 +69,9 @@ class SyncWorker @AssistedInject constructor(
             syncRepository.pullDocuments(),
             syncRepository.pullDisputes(),
             syncRepository.pullDataConflicts(),
-            syncRepository.pullApplications()
+            syncRepository.pullApplications(),
+            syncRepository.pullPropertyTransactions(),
+            syncRepository.pullServiceRequests()
         )
 
         val results = pulls + pushParcelsResult + pushLogsResult

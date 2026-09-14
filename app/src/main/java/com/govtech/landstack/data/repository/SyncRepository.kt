@@ -461,6 +461,59 @@ class SyncRepository @Inject constructor(
         } catch (e: Exception) { parseError(e) }
     }
 
+    suspend fun pullPropertyTransactions(): SyncResult = withContext(Dispatchers.IO) {
+        try {
+            val lastSync = prefs.getString("last_synced_property_transactions", "1970-01-01T00:00:00Z") ?: "1970-01-01T00:00:00Z"
+            val remotes = supabase.postgrest["property_transactions"]
+                .select { filter { gt("updated_at", lastSync) } }
+                .decodeList<RemotePropertyTransaction>()
+
+            val locals = remotes.map {
+                PropertyTransactionEntity(
+                    id = it.id ?: 0,
+                    ulpin = it.ulpin,
+                    buyerName = it.buyerName,
+                    buyerUserId = it.buyerUserId,
+                    sellerOwnerId = it.sellerOwnerId,
+                    status = it.status,
+                    initiatedBy = it.initiatedBy,
+                    createdAt = Instant.parse(it.createdAt ?: "1970-01-01T00:00:00Z"),
+                    updatedAt = Instant.parse(it.updatedAt ?: "1970-01-01T00:00:00Z")
+                )
+            }
+            if (locals.isNotEmpty()) database.propertyTransactionDao().insertTransactions(locals)
+            prefs.edit().putString("last_synced_property_transactions", Instant.now().toString()).apply()
+            SyncResult.Success
+        } catch (e: Exception) { parseError(e) }
+    }
+
+    suspend fun pullServiceRequests(): SyncResult = withContext(Dispatchers.IO) {
+        try {
+            val lastSync = prefs.getString("last_synced_service_requests", "1970-01-01T00:00:00Z") ?: "1970-01-01T00:00:00Z"
+            val remotes = supabase.postgrest["service_requests"]
+                .select { filter { gt("updated_at", lastSync) } }
+                .decodeList<RemoteServiceRequest>()
+
+            val locals = remotes.map {
+                ServiceRequestEntity(
+                    id = it.id ?: 0,
+                    ulpin = it.ulpin,
+                    citizenUserId = it.citizenUserId,
+                    requestType = it.requestType,
+                    description = it.description,
+                    status = it.status,
+                    handledBy = it.handledBy,
+                    handledAt = it.handledAt?.let { t -> Instant.parse(t) },
+                    createdAt = Instant.parse(it.createdAt ?: "1970-01-01T00:00:00Z"),
+                    updatedAt = Instant.parse(it.updatedAt ?: "1970-01-01T00:00:00Z")
+                )
+            }
+            if (locals.isNotEmpty()) database.serviceRequestDao().insertServiceRequests(locals)
+            prefs.edit().putString("last_synced_service_requests", Instant.now().toString()).apply()
+            SyncResult.Success
+        } catch (e: Exception) { parseError(e) }
+    }
+
     // -------------------------------------------------------------------------
     // Scoped Push Functions
     // -------------------------------------------------------------------------
@@ -541,6 +594,34 @@ class SyncRepository @Inject constructor(
     suspend fun pushNewRegistration(reg: RemoteParcelRegistration): SyncResult = withContext(Dispatchers.IO) {
         try {
             supabase.postgrest["parcel_registrations"].insert(reg)
+            SyncResult.Success
+        } catch (e: Exception) { parseError(e) }
+    }
+
+    suspend fun pushNewPropertyTransaction(transaction: RemotePropertyTransaction): SyncResult = withContext(Dispatchers.IO) {
+        try {
+            supabase.postgrest["property_transactions"].insert(transaction)
+            SyncResult.Success
+        } catch (e: Exception) { parseError(e) }
+    }
+
+    suspend fun pushAdvancePropertyTransactionStatus(id: Long, newStatus: String): SyncResult = withContext(Dispatchers.IO) {
+        try {
+            supabase.postgrest.rpc("advance_property_transaction_status", RpcAdvancePropertyTransactionStatusRequest(id, newStatus))
+            SyncResult.Success
+        } catch (e: Exception) { parseError(e) }
+    }
+
+    suspend fun pushNewServiceRequest(request: RemoteServiceRequest): SyncResult = withContext(Dispatchers.IO) {
+        try {
+            supabase.postgrest["service_requests"].insert(request)
+            SyncResult.Success
+        } catch (e: Exception) { parseError(e) }
+    }
+
+    suspend fun pushUpdateServiceRequestStatus(id: Long, newStatus: String): SyncResult = withContext(Dispatchers.IO) {
+        try {
+            supabase.postgrest.rpc("update_service_request_status", RpcUpdateServiceRequestStatusRequest(id, newStatus))
             SyncResult.Success
         } catch (e: Exception) { parseError(e) }
     }

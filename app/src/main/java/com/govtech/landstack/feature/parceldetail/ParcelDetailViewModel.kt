@@ -405,14 +405,31 @@ class ParcelDetailViewModel @Inject constructor(
         }
     }
 
-    fun submitOwnershipMutation(ulpin: String, name: String, khata: String, rightType: String, share: Double) {
+    fun submitOwnershipMutation(ulpin: String, name: String, khata: String, rightType: String, share: Double, email: String? = null) {
         viewModelScope.launch {
+            var userId: String? = null
+            if (!email.isNullOrBlank()) {
+                try {
+                    val response = supabase.postgrest.rpc(
+                        "get_user_id_by_email",
+                        mapOf("p_email" to email)
+                    )
+                    if (response.data.isNotBlank() && response.data != "null") {
+                        userId = response.data.replace("\"", "") // Remove quotes from json string
+                    }
+                } catch (e: Exception) {
+                    _uiEvent.emit("Could not find user with email $email")
+                    return@launch
+                }
+            }
+
             val newOwner = com.govtech.landstack.data.remote.RemoteParcelOwner(
                 ulpin = ulpin,
                 ownerName = name,
                 khataNumber = khata,
                 rightType = rightType,
-                ownershipShare = share
+                ownershipShare = share,
+                userId = userId
             )
             val result = syncRepository.executeOwnershipMutation(ulpin, listOf(newOwner))
             if (result.isSuccess) {

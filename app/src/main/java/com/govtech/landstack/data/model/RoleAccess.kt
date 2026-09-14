@@ -29,7 +29,7 @@ object RoleAccess {
 
     private val matrix: Map<String, Map<String, AccessLevel>> = mapOf(
         GIS_MAP to mapOf(
-            "Citizen" to AccessLevel.VIEW,
+            "Citizen" to AccessLevel.FULL,
             "Revenue Officer" to AccessLevel.FULL,
             "Registration Officer" to AccessLevel.VIEW,
             "Surveyor" to AccessLevel.EDIT,
@@ -37,7 +37,7 @@ object RoleAccess {
             "Admin" to AccessLevel.FULL
         ),
         CADASTRAL_MAPS to mapOf(
-            "Citizen" to AccessLevel.VIEW,
+            "Citizen" to AccessLevel.FULL,
             "Revenue Officer" to AccessLevel.FULL,
             "Registration Officer" to AccessLevel.VIEW,
             "Surveyor" to AccessLevel.EDIT,
@@ -45,7 +45,7 @@ object RoleAccess {
             "Admin" to AccessLevel.FULL
         ),
         PARCEL_BOUNDARIES to mapOf(
-            "Citizen" to AccessLevel.VIEW,
+            "Citizen" to AccessLevel.FULL,
             "Revenue Officer" to AccessLevel.VIEW,
             "Registration Officer" to AccessLevel.VIEW,
             "Surveyor" to AccessLevel.EDIT,
@@ -53,7 +53,7 @@ object RoleAccess {
             "Admin" to AccessLevel.FULL
         ),
         PARCEL_ID to mapOf(
-            "Citizen" to AccessLevel.VIEW,
+            "Citizen" to AccessLevel.FULL,
             "Revenue Officer" to AccessLevel.EDIT,
             "Registration Officer" to AccessLevel.VIEW,
             "Surveyor" to AccessLevel.EDIT,
@@ -69,7 +69,7 @@ object RoleAccess {
             "Admin" to AccessLevel.FULL
         ),
         RECORD_OF_RIGHTS to mapOf(
-            "Citizen" to AccessLevel.VIEW,
+            "Citizen" to AccessLevel.FULL,
             "Revenue Officer" to AccessLevel.EDIT,
             "Registration Officer" to AccessLevel.VIEW,
             "Surveyor" to AccessLevel.VIEW,
@@ -77,7 +77,7 @@ object RoleAccess {
             "Admin" to AccessLevel.FULL
         ),
         OWNERSHIP_RECORDS to mapOf(
-            "Citizen" to AccessLevel.VIEW,
+            "Citizen" to AccessLevel.FULL,
             "Revenue Officer" to AccessLevel.EDIT,
             "Registration Officer" to AccessLevel.VIEW,
             "Surveyor" to AccessLevel.VIEW,
@@ -85,7 +85,7 @@ object RoleAccess {
             "Admin" to AccessLevel.FULL
         ),
         OWNERSHIP_HISTORY to mapOf(
-            "Citizen" to AccessLevel.VIEW,
+            "Citizen" to AccessLevel.FULL,
             "Revenue Officer" to AccessLevel.EDIT,
             "Registration Officer" to AccessLevel.VIEW,
             "Surveyor" to AccessLevel.VIEW,
@@ -93,7 +93,7 @@ object RoleAccess {
             "Admin" to AccessLevel.FULL
         ),
         LAND_REGISTRATION to mapOf(
-            "Citizen" to AccessLevel.VIEW,
+            "Citizen" to AccessLevel.FULL,
             "Revenue Officer" to AccessLevel.VIEW,
             "Registration Officer" to AccessLevel.EDIT,
             "Surveyor" to AccessLevel.VIEW,
@@ -109,7 +109,7 @@ object RoleAccess {
             "Admin" to AccessLevel.FULL
         ),
         ENCUMBRANCE_RECORDS to mapOf(
-            "Citizen" to AccessLevel.VIEW,
+            "Citizen" to AccessLevel.FULL,
             "Revenue Officer" to AccessLevel.EDIT,
             "Registration Officer" to AccessLevel.EDIT,
             "Surveyor" to AccessLevel.NONE,
@@ -117,7 +117,7 @@ object RoleAccess {
             "Admin" to AccessLevel.FULL
         ),
         DOCUMENTS to mapOf(
-            "Citizen" to AccessLevel.VIEW,
+            "Citizen" to AccessLevel.FULL,
             "Revenue Officer" to AccessLevel.EDIT,
             "Registration Officer" to AccessLevel.EDIT,
             "Surveyor" to AccessLevel.VIEW,
@@ -125,7 +125,7 @@ object RoleAccess {
             "Admin" to AccessLevel.FULL
         ),
         DISPUTES to mapOf(
-            "Citizen" to AccessLevel.VIEW,
+            "Citizen" to AccessLevel.FULL,
             "Revenue Officer" to AccessLevel.EDIT,
             "Registration Officer" to AccessLevel.EDIT,
             "Surveyor" to AccessLevel.VIEW,
@@ -133,7 +133,7 @@ object RoleAccess {
             "Admin" to AccessLevel.FULL
         ),
         CREATE_PARCEL to mapOf(
-            "Citizen" to AccessLevel.NONE,
+            "Citizen" to AccessLevel.FULL,
             "Revenue Officer" to AccessLevel.EDIT,
             "Registration Officer" to AccessLevel.NONE,
             "Surveyor" to AccessLevel.EDIT,
@@ -141,7 +141,7 @@ object RoleAccess {
             "Admin" to AccessLevel.FULL
         ),
         EDIT_PARCEL to mapOf(
-            "Citizen" to AccessLevel.NONE,
+            "Citizen" to AccessLevel.FULL,
             "Revenue Officer" to AccessLevel.EDIT,
             "Registration Officer" to AccessLevel.NONE,
             "Surveyor" to AccessLevel.EDIT,
@@ -165,6 +165,7 @@ object RoleAccess {
     }
 
     fun isOfficerRole(role: String): Boolean {
-        return role in listOf("Land Officer", "Revenue Officer", "Registration Officer", "Surveyor", "Admin")
+        val officerRoles = listOf("Citizen", "Land Officer", "Revenue Officer", "Registration Officer", "Surveyor", "Admin")
+        return officerRoles.any { it.equals(role, ignoreCase = true) }
     }
 }

@@ -46,35 +46,16 @@ fun DashboardScreen(
     val totalParcels by viewModel.totalParcels.collectAsState()
     val activeEncumbrances by viewModel.activeEncumbrances.collectAsState()
     val totalOwners by viewModel.totalOwners.collectAsState()
+    val openConflicts by viewModel.openConflicts.collectAsState()
+    val allConflicts by viewModel.allConflicts.collectAsState()
+    val allApplications by viewModel.allApplications.collectAsState()
+    val activeApps by viewModel.activeApplications.collectAsState()
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text("Dashboard") },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.background,
-                    titleContentColor = MaterialTheme.colorScheme.onBackground
-                ),
-                navigationIcon = {
-                    IconButton(onClick = onOpenDrawer) {
-                        Icon(imageVector = Icons.Default.Menu, contentDescription = "Menu")
-                    }
-                },
-                actions = {
-                    var showLangMenu by androidx.compose.runtime.remember { androidx.compose.runtime.mutableStateOf(false) }
-                    var currentLang by androidx.compose.runtime.remember { androidx.compose.runtime.mutableStateOf("EN") }
-                    
-                    Box {
-                        TextButton(onClick = { showLangMenu = true }) {
-                            Text(currentLang, style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary)
-                        }
-                        DropdownMenu(expanded = showLangMenu, onDismissRequest = { showLangMenu = false }) {
-                            DropdownMenuItem(text = { Text("English (EN)") }, onClick = { currentLang = "EN"; showLangMenu = false })
-                            DropdownMenuItem(text = { Text("Hindi (HI)") }, onClick = { currentLang = "HI"; showLangMenu = false })
-                            DropdownMenuItem(text = { Text("Kannada (KN)") }, onClick = { currentLang = "KN"; showLangMenu = false })
-                        }
-                    }
-                }
+            com.govtech.landstack.ui.components.LandStackTopAppBar(
+                title = "Dashboard",
+                onNavigationIconClick = onOpenDrawer
             )
         }
     ) { padding ->
@@ -129,8 +110,6 @@ fun DashboardScreen(
                     }
                 }
                 item {
-                    val openConflicts by viewModel.openConflicts.collectAsState()
-                    val activeApps by viewModel.activeApplications.collectAsState()
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                         Box(modifier = Modifier.weight(1f)) {
                             StatCard(
@@ -151,7 +130,6 @@ fun DashboardScreen(
             } else {
                 // Citizen View
                 item {
-                    val activeApps by viewModel.activeApplications.collectAsState()
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                         Box(modifier = Modifier.clickable { onNavigateToList() }.weight(1f)) {
                             StatCard(
@@ -196,13 +174,12 @@ fun DashboardScreen(
 
             if (RoleAccess.isOfficerRole(role)) {
                 item {
-                    val conflicts by viewModel.allConflicts.collectAsState()
                     SectionCard(title = "Open Data Conflicts") {
-                        if (conflicts.isEmpty()) {
+                        if (allConflicts.isEmpty()) {
                             Text("No open conflicts.", style = MaterialTheme.typography.bodyMedium)
                         } else {
                             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                                conflicts.filter { it.status == "open" }.take(5).forEach { conflict ->
+                                allConflicts.filter { it.status == "open" }.take(5).forEach { conflict ->
                                     Card(
                                         modifier = Modifier.fillMaxWidth(),
                                         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
@@ -261,13 +238,12 @@ fun DashboardScreen(
             } else {
                 // Citizen Application List
                 item {
-                    val apps by viewModel.allApplications.collectAsState()
                     SectionCard(title = "My Applications") {
-                        if (apps.isEmpty()) {
+                        if (allApplications.isEmpty()) {
                             Text("No applications found.", style = MaterialTheme.typography.bodyMedium)
                         } else {
                             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                                apps.take(5).forEach { app ->
+                                allApplications.take(5).forEach { app ->
                                     Card(
                                         modifier = Modifier.fillMaxWidth(),
                                         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
@@ -305,6 +281,10 @@ fun ZoningDonutChart(data: List<ZoningCount>) {
     }
     
     val total = data.sumOf { it.count }.toFloat()
+    if (total == 0f) {
+        Text("No zoning data available.", modifier = Modifier.padding(16.dp))
+        return
+    }
     val colors = listOf(
         MaterialTheme.colorScheme.primary,
         MaterialTheme.colorScheme.secondary,
