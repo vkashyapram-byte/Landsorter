@@ -74,7 +74,7 @@ fun DashboardScreen(
         ) {
             item {
                 Spacer(modifier = Modifier.height(8.dp))
-                Text(stringResource(R.string.text_welcome_role), style = MaterialTheme.typography.displayMedium)
+                Text(stringResource(R.string.text_welcome_role, role), style = MaterialTheme.typography.displayMedium)
                 Spacer(modifier = Modifier.height(16.dp))
             }
 

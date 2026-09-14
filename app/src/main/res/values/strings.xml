@@ -42,7 +42,7 @@
     <string name="text_couldnt_load_your_properties">"Couldn't load your properties"</string>
     <string name="text_state">"State"</string>
     <string name="text_district">"District"</string>
-    <string name="text_welcome_role">"Welcome, $role"</string>
+    <string name="text_welcome_role">"Welcome, %1$s"</string>
     <string name="text_search_edit_parcels">"Search &amp; Edit Parcels"</string>
     <string name="text_view_on_map">"View on Map"</string>
     <string name="text_no_open_conflicts">"No open conflicts."</string>

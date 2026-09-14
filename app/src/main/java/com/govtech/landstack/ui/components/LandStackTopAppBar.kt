@@ -76,26 +76,26 @@ fun LandStackTopAppBar(
             text = {
                 val languages = listOf(
                     "English" to "en",
-                    "Assamese" to "as",
-                    "Bengali" to "bn",
-                    "Bodo" to "brx",
-                    "Dogri" to "doi",
-                    "Gujarati" to "gu",
-                    "Hindi" to "hi",
-                    "Kannada" to "kn",
-                    "Kashmiri" to "ks",
-                    "Konkani" to "kok",
-                    "Maithili" to "mai",
-                    "Malayalam" to "ml",
-                    "Marathi" to "mr",
-                    "Nepali" to "ne",
-                    "Odia" to "or",
-                    "Punjabi" to "pa",
-                    "Sanskrit" to "sa",
-                    "Sindhi" to "sd",
-                    "Tamil" to "ta",
-                    "Telugu" to "te",
-                    "Urdu" to "ur"
+                    "অসমীয়া" to "as", // Assamese
+                    "বাংলা" to "bn", // Bengali
+                    "बर’" to "brx", // Bodo
+                    "डोगरी" to "doi", // Dogri
+                    "ગુજરાતી" to "gu", // Gujarati
+                    "हिन्दी" to "hi", // Hindi
+                    "ಕನ್ನಡ" to "kn", // Kannada
+                    "کٲشُر" to "ks", // Kashmiri
+                    "कोंकणी" to "kok", // Konkani
+                    "मैथिली" to "mai", // Maithili
+                    "മലയാളം" to "ml", // Malayalam
+                    "मराठी" to "mr", // Marathi
+                    "नेपाली" to "ne", // Nepali
+                    "ଓଡ଼ିଆ" to "or", // Odia
+                    "ਪੰਜਾਬੀ" to "pa", // Punjabi
+                    "संस्कृतम्" to "sa", // Sanskrit
+                    "سنڌي" to "sd", // Sindhi
+                    "தமிழ்" to "ta", // Tamil
+                    "తెలుగు" to "te", // Telugu
+                    "اردو" to "ur" // Urdu
                 )
                 LazyColumn {
                     items(languages) { lang ->

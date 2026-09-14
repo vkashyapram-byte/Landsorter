@@ -37,6 +37,23 @@ class AuthViewModel @Inject constructor(
     val authState: StateFlow<AuthState> = _authState.asStateFlow()
 
     fun login(email: String, password: String) {
+        // Mock logic for DEBUG quick login
+        if (com.govtech.landstack.BuildConfig.DEBUG && password == "TestPass123!") {
+            val debugRole = when (email) {
+                "citizen_test@landstack.test" -> "Citizen"
+                "officer_test@landstack.test" -> "Land Officer"
+                "revenue_officer@landstack.test" -> "Revenue Officer"
+                "registration_officer@landstack.test" -> "Registration Officer"
+                "surveyor@landstack.test" -> "Surveyor"
+                "admin_test@landstack.test" -> "Admin"
+                else -> null
+            }
+            if (debugRole != null) {
+                _authState.value = AuthState.Success(debugRole)
+                return
+            }
+        }
+
         viewModelScope.launch {
             _authState.value = AuthState.Loading
             try {
