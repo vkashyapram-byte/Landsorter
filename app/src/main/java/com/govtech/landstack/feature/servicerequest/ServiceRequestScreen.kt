@@ -8,6 +8,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.res.stringResource
+import com.govtech.landstack.R
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -36,7 +38,7 @@ fun ServiceRequestScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("My Applications") },
+                title = { Text(stringResource(R.string.text_my_applications)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
@@ -64,17 +66,17 @@ fun ServiceRequestScreen(
                     OutlinedTextField(
                         value = ulpin,
                         onValueChange = { ulpin = it; ulpinError = it.isBlank() },
-                        label = { Text("Parcel ULPIN") },
+                        label = { Text(stringResource(R.string.text_parcel_ulpin)) },
                         isError = ulpinError,
-                        supportingText = { if (ulpinError) Text("ULPIN cannot be blank") },
+                        supportingText = { if (ulpinError) Text(stringResource(R.string.text_ulpin_cannot_be_blank)) },
                         modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
                     )
                     OutlinedTextField(
                         value = selectedType,
                         onValueChange = { selectedType = it; typeError = it.isBlank() },
-                        label = { Text("Application Type") },
+                        label = { Text(stringResource(R.string.text_application_type)) },
                         isError = typeError,
-                        supportingText = { if (typeError) Text("Application type cannot be blank") },
+                        supportingText = { if (typeError) Text(stringResource(R.string.text_application_type_cannot_be)) },
                         modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
                     )
                     Button(
@@ -89,13 +91,13 @@ fun ServiceRequestScreen(
                         },
                         modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp)
                     ) {
-                        Text("Submit Application")
+                        Text(stringResource(R.string.text_submit_application))
                     }
                 }
             }
 
             item {
-                Text("Recent Applications", style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 16.dp))
+                Text(stringResource(R.string.text_recent_applications), style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 16.dp))
             }
 
             items(apps) { app ->

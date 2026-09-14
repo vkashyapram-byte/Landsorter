@@ -10,6 +10,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.res.stringResource
+import com.govtech.landstack.R
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -35,7 +37,9 @@ fun ParcelDetailScreen(
     ulpin: String,
     role: String,
     viewModel: ParcelDetailViewModel = hiltViewModel(),
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    onProfileClick: () -> Unit = {},
+    onSettingsClick: () -> Unit = {}
 ) {
     LaunchedEffect(ulpin) {
         viewModel.loadParcel(ulpin)
@@ -84,7 +88,9 @@ fun ParcelDetailScreen(
         topBar = {
             com.govtech.landstack.ui.components.LandStackTopAppBar(
                 title = "Parcel $ulpin",
-                onNavigationIconClick = onBack
+                onNavigationIconClick = onBack,
+                onProfileClick = onProfileClick,
+                onSettingsClick = onSettingsClick
             )
         }
     ) { padding ->
@@ -97,15 +103,15 @@ fun ParcelDetailScreen(
             }
             is com.govtech.landstack.ui.util.UiState.Empty -> {
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    Text("No parcel found.")
+                    Text(stringResource(R.string.text_no_parcel_found))
                 }
                 return@Scaffold
             }
             is com.govtech.landstack.ui.util.UiState.Error -> {
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text("Error: ${state.message}", color = MaterialTheme.colorScheme.error)
-                        Button(onClick = { viewModel.loadParcel(ulpin) }) { Text("Retry") }
+                        Text(stringResource(R.string.text_error_statemessage), color = MaterialTheme.colorScheme.error)
+                        Button(onClick = { viewModel.loadParcel(ulpin) }) { Text(stringResource(R.string.text_retry)) }
                     }
                 }
                 return@Scaffold
@@ -240,7 +246,7 @@ fun OverviewTabContent(
             onClick = { showVerificationResult = true },
             modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp)
         ) {
-            Text("Run Property Verification")
+            Text(stringResource(R.string.text_run_property_verification))
         }
 
         if (showVerificationResult) {
@@ -263,11 +269,11 @@ fun OverviewTabContent(
                     }
                     Spacer(modifier = Modifier.height(8.dp))
                     if (!isClear) {
-                        if (hasDisputes) Text("- Active legal disputes found")
-                        if (hasEncumbrances) Text("- Financial encumbrances/liens found")
-                        if (hasAnomalies) Text("- Registration anomalies detected (multiple recent registrations)")
+                        if (hasDisputes) Text(stringResource(R.string.text_active_legal_disputes_found))
+                        if (hasEncumbrances) Text(stringResource(R.string.text_financial_encumbrancesliens_found))
+                        if (hasAnomalies) Text(stringResource(R.string.text_registration_anomalies_detected_multiple))
                     } else {
-                        Text("No active disputes, encumbrances, or anomalies detected.")
+                        Text(stringResource(R.string.text_no_active_disputes_encumbrances))
                     }
                 }
             }
@@ -291,7 +297,7 @@ fun OwnershipRecordsTab(
 
     if (currentOwners.isEmpty()) {
         SectionCard(title = "Current Owners") {
-            Text("No ownership records found.", style = MaterialTheme.typography.bodyMedium)
+            Text(stringResource(R.string.text_no_ownership_records_found), style = MaterialTheme.typography.bodyMedium)
         }
     } else {
         SectionCard(title = "Current Owners") {
@@ -349,29 +355,29 @@ fun OwnershipRecordsTab(
             OutlinedTextField(
                 value = newOwner,
                 onValueChange = { newOwner = it; ownerError = it.isBlank() },
-                label = { Text("New Owner Name") },
+                label = { Text(stringResource(R.string.text_new_owner_name)) },
                 isError = ownerError,
-                supportingText = { if (ownerError) Text("Owner name cannot be blank") },
+                supportingText = { if (ownerError) Text(stringResource(R.string.text_owner_name_cannot_be)) },
                 modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
             )
             OutlinedTextField(
                 value = userEmail,
                 onValueChange = { userEmail = it },
-                label = { Text("User Email (Optional to link app account)") },
+                label = { Text(stringResource(R.string.text_user_email_optional_to)) },
                 modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
             )
             OutlinedTextField(
                 value = khata,
                 onValueChange = { khata = it; khataError = it.isBlank() },
-                label = { Text("Khata Number") },
+                label = { Text(stringResource(R.string.text_khata_number)) },
                 isError = khataError,
-                supportingText = { if (khataError) Text("Khata number cannot be blank") },
+                supportingText = { if (khataError) Text(stringResource(R.string.text_khata_number_cannot_be)) },
                 modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
             )
             OutlinedTextField(
                 value = rightType,
                 onValueChange = { rightType = it },
-                label = { Text("Right Type (e.g. Individual, Joint)") },
+                label = { Text(stringResource(R.string.text_right_type_eg_individual)) },
                 modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
             )
             OutlinedTextField(
@@ -381,9 +387,9 @@ fun OwnershipRecordsTab(
                     val d = it.toDoubleOrNull()
                     shareError = d == null || d <= 0.0 || d > 1.0
                 },
-                label = { Text("Share (e.g. 1.0 or 0.5)") },
+                label = { Text(stringResource(R.string.text_share_eg_10_or)) },
                 isError = shareError,
-                supportingText = { if (shareError) Text("Share must be a number between 0 and 1") },
+                supportingText = { if (shareError) Text(stringResource(R.string.text_share_must_be_a)) },
                 modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
             )
 
@@ -403,7 +409,7 @@ fun OwnershipRecordsTab(
                 },
                 modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp)
             ) {
-                Text("Submit Mutation")
+                Text(stringResource(R.string.text_submit_mutation))
             }
         }
     }
@@ -416,9 +422,9 @@ fun OwnershipRecordsTab(
                     colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha=0.5f))
                 ) {
                     Column(modifier = Modifier.padding(12.dp)) {
-                        Text("Action: ${log.action}", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.bodyMedium)
-                        Text("Actor Role: ${log.user_role}", style = MaterialTheme.typography.bodySmall, color = Color.Gray)
-                        Text("Timestamp: ${java.time.Instant.ofEpochMilli(log.timestamp)}", style = MaterialTheme.typography.bodySmall, color = Color.Gray)
+                        Text(stringResource(R.string.text_action_logaction), fontWeight = FontWeight.Bold, style = MaterialTheme.typography.bodyMedium)
+                        Text(stringResource(R.string.text_actor_role_loguserrole), style = MaterialTheme.typography.bodySmall, color = Color.Gray)
+                        Text(stringResource(R.string.text_timestamp_javatimeinstantofepochmillilogtimestamp), style = MaterialTheme.typography.bodySmall, color = Color.Gray)
                     }
                 }
             }
@@ -436,7 +442,7 @@ fun OwnershipHistoryTab(owners: List<OwnerEntity>) {
 
     if (sorted.isEmpty()) {
         SectionCard(title = "Ownership History") {
-            Text("No ownership history available.", style = MaterialTheme.typography.bodyMedium)
+            Text(stringResource(R.string.text_no_ownership_history_available), style = MaterialTheme.typography.bodyMedium)
         }
         return
     }
@@ -516,7 +522,7 @@ fun RegistrationTab(
 ) {
     if (registrations.isEmpty()) {
         SectionCard(title = "Land Registrations") {
-            Text("No registration records found.", style = MaterialTheme.typography.bodyMedium)
+            Text(stringResource(R.string.text_no_registration_records_found), style = MaterialTheme.typography.bodyMedium)
         }
         return
     }
@@ -539,7 +545,7 @@ fun RegistrationTab(
             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f))
         ) {
             Row(modifier = Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
-                Text("ℹ", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
+                Text(stringResource(R.string.text_), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
                     text = "Note: 'Status: Registered' is inferred. The underlying schema does not explicitly model pending/complete sale states.",
@@ -592,7 +598,7 @@ fun RegistrationTab(
 fun TransactionTrackingTab(registrations: List<RegistrationEntity>) {
     if (registrations.isEmpty()) {
         SectionCard(title = "Transaction Status") {
-            Text("No active transactions.", style = MaterialTheme.typography.bodyMedium)
+            Text(stringResource(R.string.text_no_active_transactions), style = MaterialTheme.typography.bodyMedium)
         }
         return
     }
@@ -696,7 +702,7 @@ fun LegalTabContent(
 ) {
     if (encumbrances.isEmpty() && disputes.isEmpty() && restrictions.isEmpty()) {
         SectionCard(title = "Legal Status") {
-            Text("No encumbrances, disputes, or restrictions found.", style = MaterialTheme.typography.bodyMedium)
+            Text(stringResource(R.string.text_no_encumbrances_disputes_or), style = MaterialTheme.typography.bodyMedium)
         }
         return
     }
@@ -784,7 +790,7 @@ fun LegalTabContent(
                     modifier = Modifier.padding(16.dp).fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text("⚠", style = MaterialTheme.typography.titleLarge)
+                    Text(stringResource(R.string.text__1), style = MaterialTheme.typography.titleLarge)
                     Spacer(modifier = Modifier.width(12.dp))
                     Column {
                         Text(
@@ -857,7 +863,7 @@ fun UtilitiesTabContent(parcel: Parcel) {
 @Composable
 fun DocumentsTabContent(documents: List<DocumentEntity>, viewModel: ParcelDetailViewModel) {
     if (documents.isEmpty()) {
-        Text("No documents found.", modifier = Modifier.padding(16.dp))
+        Text(stringResource(R.string.text_no_documents_found), modifier = Modifier.padding(16.dp))
         return
     }
     documents.forEach { doc ->
@@ -868,9 +874,9 @@ fun DocumentsTabContent(documents: List<DocumentEntity>, viewModel: ParcelDetail
             DetailRow("Heuristic Check", viewModel.verifyDocumentHeuristic(doc)) {
                 val check = viewModel.verifyDocumentHeuristic(doc)
                 if (check.startsWith("⚠")) {
-                    Badge(containerColor = MaterialTheme.colorScheme.error) { Text("⚠") }
+                    Badge(containerColor = MaterialTheme.colorScheme.error) { Text(stringResource(R.string.text__1)) }
                 } else {
-                    Badge(containerColor = Color(0xFF4CAF50)) { Text("✓") }
+                    Badge(containerColor = Color(0xFF4CAF50)) { Text(stringResource(R.string.text__2)) }
                 }
             }
             DetailRow("Uploaded By", doc.uploadedBy)
@@ -882,7 +888,7 @@ fun DocumentsTabContent(documents: List<DocumentEntity>, viewModel: ParcelDetail
 @Composable
 fun BuildingPermissionsTabContent() {
     SectionCard(title = "Building Permissions") {
-        Text("Coming soon...")
+        Text(stringResource(R.string.text_coming_soon))
     }
 }
 
@@ -890,7 +896,7 @@ fun BuildingPermissionsTabContent() {
 fun TaxesTabContent(taxRecords: List<TaxRecordEntity>) {
     if (taxRecords.isEmpty()) {
         SectionCard(title = "Tax Records") {
-            Text("No tax records found.")
+            Text(stringResource(R.string.text_no_tax_records_found))
         }
         return
     }
@@ -910,6 +916,6 @@ fun TaxesTabContent(taxRecords: List<TaxRecordEntity>) {
 @Composable
 fun ApplicationHistoryTabContent() {
     SectionCard(title = "Application History") {
-        Text("Coming soon...")
+        Text(stringResource(R.string.text_coming_soon))
     }
 }

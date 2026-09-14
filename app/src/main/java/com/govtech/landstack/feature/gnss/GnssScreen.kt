@@ -13,6 +13,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.res.stringResource
+import com.govtech.landstack.R
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -45,7 +47,7 @@ fun GnssScreen(onBack: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("NavIC / GNSS Status") },
+                title = { Text(stringResource(R.string.text_navic_gnss_status)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
@@ -63,10 +65,10 @@ fun GnssScreen(onBack: () -> Unit) {
             if (hasLocationPermission) {
                 GnssStatusView(context)
             } else {
-                Text("Location permission is required to access hardware GNSS status.")
+                Text(stringResource(R.string.text_location_permission_is_required))
                 Spacer(modifier = Modifier.height(16.dp))
                 Button(onClick = { permissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION) }) {
-                    Text("Request Permission")
+                    Text(stringResource(R.string.text_request_permission))
                 }
             }
         }
@@ -109,25 +111,24 @@ fun GnssStatusView(context: Context) {
     }
 
     Column {
-        Text("GNSS Hardware Status", style = MaterialTheme.typography.titleLarge)
+        Text(stringResource(R.string.text_gnss_hardware_status), style = MaterialTheme.typography.titleLarge)
         Spacer(modifier = Modifier.height(16.dp))
         
         Card(modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)) {
             Column(modifier = Modifier.padding(16.dp)) {
-                Text("Total Satellites in View: $totalSatelliteCount", style = MaterialTheme.typography.bodyLarge)
+                Text(stringResource(R.string.text_total_satellites_in_view), style = MaterialTheme.typography.bodyLarge)
                 Spacer(modifier = Modifier.height(8.dp))
-                Text("NavIC (IRNSS) Satellites: $navicSatelliteCount", style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.primary)
+                Text(stringResource(R.string.text_navic_irnss_satellites_navicsatellitecount), style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.primary)
             }
         }
 
         if (navicSatelliteCount == 0) {
-            Text(
-                "No NavIC satellites detected -- this can be normal indoors, on this device's chipset, or on an emulator.",
+            Text(stringResource(R.string.text_no_navic_satellites_detected),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         } else {
-            Text("NavIC satellites are contributing to the fused location fix.")
+            Text(stringResource(R.string.text_navic_satellites_are_contributing))
         }
     }
 }

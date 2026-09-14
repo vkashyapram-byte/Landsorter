@@ -7,6 +7,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
+import androidx.compose.ui.res.stringResource
+import com.govtech.landstack.R
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -39,6 +41,8 @@ fun DashboardScreen(
     onNavigateToList: () -> Unit,
     onNavigateToServices: () -> Unit,
     onOpenDrawer: () -> Unit,
+    onProfileClick: () -> Unit = {},
+    onSettingsClick: () -> Unit = {},
     viewModel: DashboardViewModel = hiltViewModel()
 ) {
     val zoningCounts by viewModel.zoningCounts.collectAsState()
@@ -55,7 +59,9 @@ fun DashboardScreen(
         topBar = {
             com.govtech.landstack.ui.components.LandStackTopAppBar(
                 title = "Dashboard",
-                onNavigationIconClick = onOpenDrawer
+                onNavigationIconClick = onOpenDrawer,
+                onProfileClick = onProfileClick,
+                onSettingsClick = onSettingsClick
             )
         }
     ) { padding ->
@@ -68,7 +74,7 @@ fun DashboardScreen(
         ) {
             item {
                 Spacer(modifier = Modifier.height(8.dp))
-                Text("Welcome, $role", style = MaterialTheme.typography.displayMedium)
+                Text(stringResource(R.string.text_welcome_role), style = MaterialTheme.typography.displayMedium)
                 Spacer(modifier = Modifier.height(16.dp))
             }
 
@@ -153,11 +159,11 @@ fun DashboardScreen(
                 Row(horizontalArrangement = Arrangement.spacedBy(16.dp), modifier = Modifier.fillMaxWidth()) {
                     if (RoleAccess.isOfficerRole(role)) {
                         Button(onClick = onNavigateToList, modifier = Modifier.weight(1f)) {
-                            Text("Search & Edit Parcels")
+                            Text(stringResource(R.string.text_search_edit_parcels))
                         }
                     }
                     Button(onClick = onNavigateToMap, modifier = Modifier.weight(1f)) {
-                        Text("View on Map")
+                        Text(stringResource(R.string.text_view_on_map))
                     }
                 }
             }
@@ -176,7 +182,7 @@ fun DashboardScreen(
                 item {
                     SectionCard(title = "Open Data Conflicts") {
                         if (allConflicts.isEmpty()) {
-                            Text("No open conflicts.", style = MaterialTheme.typography.bodyMedium)
+                            Text(stringResource(R.string.text_no_open_conflicts), style = MaterialTheme.typography.bodyMedium)
                         } else {
                             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                                 allConflicts.filter { it.status == "open" }.take(5).forEach { conflict ->
@@ -193,8 +199,8 @@ fun DashboardScreen(
                                             Column(modifier = Modifier.weight(1f)) {
                                                 Text(conflict.ulpin, style = MaterialTheme.typography.titleSmall)
                                                 Spacer(modifier = Modifier.height(4.dp))
-                                                Text("Category: ${conflict.category}", style = MaterialTheme.typography.bodySmall, color = Color.Gray)
-                                                Text("Severity: ${conflict.severity}", style = MaterialTheme.typography.bodySmall, color = if (conflict.severity == "high") MaterialTheme.colorScheme.error else Color.Gray)
+                                                Text(stringResource(R.string.text_category_conflictcategory), style = MaterialTheme.typography.bodySmall, color = Color.Gray)
+                                                Text(stringResource(R.string.text_severity_conflictseverity), style = MaterialTheme.typography.bodySmall, color = if (conflict.severity == "high") MaterialTheme.colorScheme.error else Color.Gray)
                                             }
                                             StatusBadge(status = conflict.status)
                                         }
@@ -208,7 +214,7 @@ fun DashboardScreen(
                 item {
                     SectionCard(title = "Pending Approvals") {
                         if (pendingApprovals.isEmpty()) {
-                            Text("No pending approvals.", style = MaterialTheme.typography.bodyMedium)
+                            Text(stringResource(R.string.text_no_pending_approvals), style = MaterialTheme.typography.bodyMedium)
                         } else {
                             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                                 pendingApprovals.forEach { permit ->
@@ -240,7 +246,7 @@ fun DashboardScreen(
                 item {
                     SectionCard(title = "My Applications") {
                         if (allApplications.isEmpty()) {
-                            Text("No applications found.", style = MaterialTheme.typography.bodyMedium)
+                            Text(stringResource(R.string.text_no_applications_found), style = MaterialTheme.typography.bodyMedium)
                         } else {
                             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                                 allApplications.take(5).forEach { app ->
@@ -255,7 +261,7 @@ fun DashboardScreen(
                                             verticalAlignment = Alignment.CenterVertically
                                         ) {
                                             Column {
-                                                Text("${app.applicationType} - ${app.ulpin}", style = MaterialTheme.typography.titleSmall)
+                                                Text(stringResource(R.string.text_appapplicationtype_appulpin), style = MaterialTheme.typography.titleSmall)
                                                 Spacer(modifier = Modifier.height(4.dp))
                                                 Text(app.createdAt.toString(), style = MaterialTheme.typography.bodySmall, color = Color.Gray)
                                             }
@@ -276,13 +282,13 @@ fun DashboardScreen(
 @Composable
 fun ZoningDonutChart(data: List<ZoningCount>) {
     if (data.isEmpty()) {
-        Text("No zoning data available.", modifier = Modifier.padding(16.dp))
+        Text(stringResource(R.string.text_no_zoning_data_available), modifier = Modifier.padding(16.dp))
         return
     }
     
     val total = data.sumOf { it.count }.toFloat()
     if (total == 0f) {
-        Text("No zoning data available.", modifier = Modifier.padding(16.dp))
+        Text(stringResource(R.string.text_no_zoning_data_available), modifier = Modifier.padding(16.dp))
         return
     }
     val colors = listOf(

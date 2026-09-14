@@ -8,6 +8,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
+import androidx.compose.ui.res.stringResource
+import com.govtech.landstack.R
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -31,7 +33,7 @@ fun TransactionsScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Property Transactions") },
+                title = { Text(stringResource(R.string.text_property_transactions)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
@@ -57,8 +59,7 @@ fun TransactionsScreen(
                 }
                 is UiState.Empty -> {
                     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                        Text(
-                            "You don't have any ongoing transactions.", 
+                        Text(stringResource(R.string.text_you_dont_have_any_1), 
                             style = MaterialTheme.typography.bodyLarge,
                             color = Color.Gray
                         )
@@ -67,8 +68,7 @@ fun TransactionsScreen(
                 is UiState.Error -> {
                     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text(
-                                "Couldn't load your transactions",
+                            Text(stringResource(R.string.text_couldnt_load_your_transactions),
                                 style = MaterialTheme.typography.titleMedium,
                                 color = MaterialTheme.colorScheme.error
                             )
@@ -123,11 +123,11 @@ fun TransactionCard(tx: PropertyTransactionEntity) {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Column {
-                    Text("Role", style = MaterialTheme.typography.bodySmall, color = Color.Gray)
-                    Text("Buyer", style = MaterialTheme.typography.bodyMedium)
+                    Text(stringResource(R.string.text_role), style = MaterialTheme.typography.bodySmall, color = Color.Gray)
+                    Text(stringResource(R.string.text_buyer), style = MaterialTheme.typography.bodyMedium)
                 }
                 Column {
-                    Text("Date", style = MaterialTheme.typography.bodySmall, color = Color.Gray)
+                    Text(stringResource(R.string.text_date), style = MaterialTheme.typography.bodySmall, color = Color.Gray)
                     Text(tx.createdAt.toString().take(10), style = MaterialTheme.typography.bodyMedium)
                 }
             }

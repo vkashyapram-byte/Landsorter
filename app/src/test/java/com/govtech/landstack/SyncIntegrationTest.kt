@@ -174,6 +174,7 @@ class SyncIntegrationTest {
             restrictionDao = object : com.govtech.landstack.data.local.RestrictionDao {
                 override suspend fun insertRestrictions(restrictions: List<com.govtech.landstack.data.local.RestrictionEntity>) {}
                 override fun getRestrictionsByUlpin(ulpin: String) = kotlinx.coroutines.flow.flowOf(emptyList<com.govtech.landstack.data.local.RestrictionEntity>())
+                override suspend fun getRestrictionsByUlpinSync(ulpin: String) = emptyList<com.govtech.landstack.data.local.RestrictionEntity>()
             },
             pendingConflictDao = object : com.govtech.landstack.data.local.PendingConflictDao {
                 override suspend fun insertConflict(conflict: com.govtech.landstack.data.local.PendingConflictEntity) {}

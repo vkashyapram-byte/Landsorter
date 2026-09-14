@@ -10,6 +10,8 @@ import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.ui.unit.dp
 
 import androidx.compose.runtime.*
+import androidx.compose.ui.res.stringResource
+import com.govtech.landstack.R
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -30,6 +32,8 @@ import androidx.compose.material.icons.automirrored.filled.*
 
 import androidx.compose.material3.*
 import androidx.compose.foundation.layout.*
+
+import androidx.navigation.compose.currentBackStackEntryAsState
 import kotlinx.coroutines.launch
 
 @Composable
@@ -89,7 +93,7 @@ fun MainNavigation() {
                     if ("Citizen".equals(currentRole, ignoreCase = true)) {
                         NavigationDrawerItem(
                             icon = { Icon(Icons.Default.Home, contentDescription = null) },
-                            label = { Text("Dashboard") },
+                            label = { Text(stringResource(R.string.text_dashboard)) },
                             selected = navController.currentDestination?.route == "dashboard",
                             onClick = { 
                                 scope.launch { drawerState.close() }
@@ -100,7 +104,7 @@ fun MainNavigation() {
                         )
                         NavigationDrawerItem(
                             icon = { Icon(Icons.Default.Search, contentDescription = null) },
-                            label = { Text("Search") },
+                            label = { Text(stringResource(R.string.text_search)) },
                             selected = navController.currentDestination?.route == "parcel_list",
                             onClick = { 
                                 scope.launch { drawerState.close() }
@@ -111,7 +115,7 @@ fun MainNavigation() {
                         )
                         NavigationDrawerItem(
                             icon = { Icon(Icons.Default.Person, contentDescription = null) },
-                            label = { Text("My Property") },
+                            label = { Text(stringResource(R.string.text_my_property)) },
                             selected = navController.currentDestination?.route == "my_property",
                             onClick = { 
                                 scope.launch { drawerState.close() }
@@ -122,7 +126,7 @@ fun MainNavigation() {
                         )
                         NavigationDrawerItem(
                             icon = { Icon(Icons.Default.Add, contentDescription = null) },
-                            label = { Text("Register Property") },
+                            label = { Text(stringResource(R.string.text_register_property)) },
                             selected = navController.currentDestination?.route == "parcel/new",
                             onClick = { 
                                 scope.launch { drawerState.close() }
@@ -133,7 +137,7 @@ fun MainNavigation() {
                         )
                         NavigationDrawerItem(
                             icon = { Icon(Icons.Default.List, contentDescription = null) },
-                            label = { Text("Transactions") },
+                            label = { Text(stringResource(R.string.text_transactions)) },
                             selected = navController.currentDestination?.route == "transactions",
                             onClick = { 
                                 scope.launch { drawerState.close() }
@@ -144,7 +148,7 @@ fun MainNavigation() {
                         )
                         NavigationDrawerItem(
                             icon = { Icon(Icons.Default.List, contentDescription = null) },
-                            label = { Text("Records") },
+                            label = { Text(stringResource(R.string.text_records)) },
                             selected = navController.currentDestination?.route == "records",
                             onClick = { 
                                 scope.launch { drawerState.close() }
@@ -155,7 +159,7 @@ fun MainNavigation() {
                         )
                         NavigationDrawerItem(
                             icon = { Icon(Icons.Default.ShoppingCart, contentDescription = null) },
-                            label = { Text("Tax") },
+                            label = { Text(stringResource(R.string.text_tax)) },
                             selected = navController.currentDestination?.route == "tax",
                             onClick = { 
                                 scope.launch { drawerState.close() }
@@ -166,7 +170,7 @@ fun MainNavigation() {
                         )
                         NavigationDrawerItem(
                             icon = { Icon(Icons.Default.Build, contentDescription = null) },
-                            label = { Text("Service Request") },
+                            label = { Text(stringResource(R.string.text_service_request)) },
                             selected = navController.currentDestination?.route == "service_requests",
                             onClick = { 
                                 scope.launch { drawerState.close() }
@@ -175,23 +179,11 @@ fun MainNavigation() {
                             modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
                             shape = androidx.compose.foundation.shape.RoundedCornerShape(50)
                         )
-                        NavigationDrawerItem(
-                            icon = { Icon(Icons.Default.Face, contentDescription = null) }, // Placeholder icon for AI
-                            label = { Text("AI Assistant") },
-                            selected = navController.currentDestination?.route?.startsWith("ai_assistant") == true,
-                            onClick = {
-                                scope.launch { drawerState.close() }
-                                val ulpinArg = navController.currentBackStackEntry?.arguments?.getString("ulpin")
-                                val aiRoute = if (ulpinArg != null && ulpinArg != "new") "ai_assistant?ulpin=$ulpinArg" else "ai_assistant"
-                                navController.navigate(aiRoute) { launchSingleTop = true }
-                            },
-                            modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
-                            shape = androidx.compose.foundation.shape.RoundedCornerShape(50)
-                        )
+
                     } else {
                         NavigationDrawerItem(
                             icon = { Icon(androidx.compose.material.icons.Icons.Default.Home, contentDescription = null) },
-                            label = { Text("Dashboard") },
+                            label = { Text(stringResource(R.string.text_dashboard)) },
                             selected = navController.currentDestination?.route == "dashboard",
                             onClick = { 
                                 scope.launch { drawerState.close() }
@@ -204,7 +196,7 @@ fun MainNavigation() {
                         if (RoleAccess.canEdit(currentRole, RoleAccess.CREATE_PARCEL)) {
                             NavigationDrawerItem(
                                 icon = { Icon(androidx.compose.material.icons.Icons.Default.Add, contentDescription = null) },
-                                label = { Text("Create Parcel") },
+                                label = { Text(stringResource(R.string.text_create_parcel)) },
                                 selected = navController.currentDestination?.route == "parcel/new",
                                 onClick = { 
                                     scope.launch { drawerState.close() }
@@ -217,31 +209,22 @@ fun MainNavigation() {
                         
                         NavigationDrawerItem(
                             icon = { Icon(androidx.compose.material.icons.Icons.Default.Person, contentDescription = null) },
-                            label = { Text("My Profile") },
+                            label = { Text(stringResource(R.string.text_my_profile)) },
                             selected = false,
                             onClick = { 
                                 scope.launch { drawerState.close() }
+                                navController.navigate("profile") { launchSingleTop = true }
                             },
                             modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
                             shape = androidx.compose.foundation.shape.RoundedCornerShape(50)
                         )
 
-                        NavigationDrawerItem(
-                            icon = { Icon(androidx.compose.material.icons.Icons.Default.Face, contentDescription = null) }, // Placeholder icon for AI
-                            label = { Text("AI Assistant") },
-                            selected = navController.currentDestination?.route == "ai_assistant",
-                            onClick = {
-                                scope.launch { drawerState.close() }
-                                navController.navigate("ai_assistant") { launchSingleTop = true }
-                            },
-                            modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
-                            shape = androidx.compose.foundation.shape.RoundedCornerShape(50)
-                        )
+
                     }
                     
                     NavigationDrawerItem(
                         icon = { Icon(Icons.AutoMirrored.Filled.ExitToApp, contentDescription = null) },
-                        label = { Text("Logout") },
+                        label = { Text(stringResource(R.string.text_logout)) },
                         selected = false,
                         onClick = { 
                             scope.launch { drawerState.close() }
@@ -259,74 +242,123 @@ fun MainNavigation() {
             }
         }
     ) {
-        NavHost(navController = navController, startDestination = "auth") {
-            composable("auth") {
-                AuthScreen(
-                    viewModel = authViewModel,
-                    onLoginSuccess = { role ->
-                        currentRole = role
-                        navController.navigate("dashboard") {
-                            popUpTo("auth") { inclusive = true }
+        Box(modifier = Modifier.fillMaxSize()) {
+            NavHost(navController = navController, startDestination = "auth") {
+                composable("auth") {
+                    AuthScreen(
+                        viewModel = authViewModel,
+                        onLoginSuccess = { role ->
+                            currentRole = role
+                            navController.navigate("dashboard") {
+                                popUpTo("auth") { inclusive = true }
+                            }
                         }
-                    }
-                )
+                    )
+                }
+                composable("dashboard") {
+                    DashboardScreen(
+                        role = currentRole,
+                        onNavigateToMap = { navController.navigate("map") },
+                        onNavigateToList = { navController.navigate("parcel_list") },
+                        onNavigateToServices = { navController.navigate("service_requests") },
+                        onOpenDrawer = {
+                            scope.launch { drawerState.open() }
+                        },
+                        onProfileClick = { navController.navigate("profile") { launchSingleTop = true } },
+                        onSettingsClick = { navController.navigate("settings") { launchSingleTop = true } }
+                    )
+                }
+                composable("parcel_list") {
+                    com.govtech.landstack.feature.parcellist.ParcelListScreen(
+                        role = currentRole,
+                        onBack = { navController.popBackStack() },
+                        onNavigateToParcel = { ulpin -> navController.navigate("parcel/$ulpin") }
+                    )
+                }
+                composable("map") {
+                    MapScreen(
+                        role = currentRole,
+                        onNavigateToParcel = { ulpin -> navController.navigate("parcel/$ulpin") },
+                        onBack = { navController.popBackStack() }
+                    )
+                }
+                composable("parcel/{ulpin}") { backStackEntry ->
+                    val ulpin = backStackEntry.arguments?.getString("ulpin") ?: ""
+                    ParcelDetailScreen(
+                        ulpin = ulpin,
+                        role = currentRole,
+                        onBack = { navController.popBackStack() },
+                        onProfileClick = { navController.navigate("profile") { launchSingleTop = true } },
+                        onSettingsClick = { navController.navigate("settings") { launchSingleTop = true } }
+                    )
+                }
+                composable("gnss") {
+                    GnssScreen(onBack = { navController.popBackStack() })
+                }
+                composable("service_requests") {
+                    com.govtech.landstack.feature.servicerequest.ServiceRequestScreen(onBack = { navController.popBackStack() })
+                }
+                composable("records") {
+                    com.govtech.landstack.feature.records.RecordsScreen(
+                        onBack = { navController.popBackStack() },
+                        onProfileClick = { navController.navigate("profile") { launchSingleTop = true } },
+                        onSettingsClick = { navController.navigate("settings") { launchSingleTop = true } }
+                    )
+                }
+                composable(
+                    "ai_assistant?ulpin={ulpin}",
+                    arguments = listOf(androidx.navigation.navArgument("ulpin") { nullable = true })
+                ) { backStackEntry ->
+                    val ulpin = backStackEntry.arguments?.getString("ulpin")
+                    com.govtech.landstack.feature.aiassistant.AIAssistantScreen(ulpin = ulpin, onBack = { navController.popBackStack() })
+                }
+                composable("my_property") {
+                    MyPropertyScreen(
+                        onBack = { navController.popBackStack() },
+                        onNavigateToParcel = { ulpin -> navController.navigate("parcel/$ulpin") }
+                    )
+                }
+                composable("profile") {
+                    com.govtech.landstack.feature.profile.ProfileScreen(
+                        onNavigateToLogin = {
+                            currentRole = ""
+                            navController.navigate("auth") {
+                                popUpTo(0) { inclusive = true }
+                            }
+                        }
+                    )
+                }
+                composable("settings") {
+                    com.govtech.landstack.feature.settings.SettingsScreen()
+                }
+                composable("transactions") {
+                    TransactionsScreen(onBack = { navController.popBackStack() })
+                }
+
+                composable("tax") {
+                    TaxScreen(onBack = { navController.popBackStack() })
+                }
             }
-            composable("dashboard") {
-                DashboardScreen(
-                    role = currentRole,
-                    onNavigateToMap = { navController.navigate("map") },
-                    onNavigateToList = { navController.navigate("parcel_list") },
-                    onNavigateToServices = { navController.navigate("service_requests") },
-                    onOpenDrawer = {
-                        scope.launch { drawerState.open() }
-                    }
-                )
-            }
-            composable("parcel_list") {
-                com.govtech.landstack.feature.parcellist.ParcelListScreen(
-                    role = currentRole,
-                    onBack = { navController.popBackStack() },
-                    onNavigateToParcel = { ulpin -> navController.navigate("parcel/$ulpin") }
-                )
-            }
-            composable("map") {
-                MapScreen(
-                    role = currentRole,
-                    onNavigateToParcel = { ulpin -> navController.navigate("parcel/$ulpin") },
-                    onBack = { navController.popBackStack() }
-                )
-            }
-            composable("parcel/{ulpin}") { backStackEntry ->
-                val ulpin = backStackEntry.arguments?.getString("ulpin") ?: ""
-                ParcelDetailScreen(ulpin = ulpin, role = currentRole, onBack = { navController.popBackStack() })
-            }
-            composable("gnss") {
-                GnssScreen(onBack = { navController.popBackStack() })
-            }
-            composable("service_requests") {
-                com.govtech.landstack.feature.servicerequest.ServiceRequestScreen(onBack = { navController.popBackStack() })
-            }
-            composable(
-                "ai_assistant?ulpin={ulpin}",
-                arguments = listOf(androidx.navigation.navArgument("ulpin") { nullable = true })
-            ) { backStackEntry ->
-                val ulpin = backStackEntry.arguments?.getString("ulpin")
-                com.govtech.landstack.feature.aiassistant.AIAssistantScreen(ulpin = ulpin, onBack = { navController.popBackStack() })
-            }
-            composable("my_property") {
-                MyPropertyScreen(
-                    onBack = { navController.popBackStack() },
-                    onNavigateToParcel = { ulpin -> navController.navigate("parcel/$ulpin") }
-                )
-            }
-            composable("transactions") {
-                TransactionsScreen(onBack = { navController.popBackStack() })
-            }
-            composable("records") {
-                RecordsScreen(onBack = { navController.popBackStack() })
-            }
-            composable("tax") {
-                TaxScreen(onBack = { navController.popBackStack() })
+
+            val navBackStackEntry = navController.currentBackStackEntryAsState().value
+            val currentRoute = navBackStackEntry?.destination?.route
+
+            if (currentRoute != null && !currentRoute.startsWith("auth") && !currentRoute.startsWith("ai_assistant")) {
+                FloatingActionButton(
+                    onClick = {
+                        val ulpinArg = navBackStackEntry.arguments?.getString("ulpin")
+                        val aiRoute = if (ulpinArg != null && ulpinArg != "new") "ai_assistant?ulpin=$ulpinArg" else "ai_assistant"
+                        navController.navigate(aiRoute) { launchSingleTop = true }
+                    },
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
+                        .padding(16.dp)
+                        .padding(bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()), // handle nav bar overlaps if any
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    contentColor = MaterialTheme.colorScheme.onPrimary
+                ) {
+                    Icon(androidx.compose.material.icons.Icons.Default.Face, contentDescription = "AI Assistant")
+                }
             }
         }
     }

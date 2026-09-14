@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material3.*
+import androidx.compose.ui.res.stringResource
+import com.govtech.landstack.R
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -12,17 +14,23 @@ import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RecordsScreen(onBack: () -> Unit) {
+fun RecordsScreen(
+    onBack: () -> Unit,
+    onProfileClick: () -> Unit = {},
+    onSettingsClick: () -> Unit = {}
+) {
     Scaffold(
         topBar = {
             com.govtech.landstack.ui.components.LandStackTopAppBar(
                 title = "Records",
-                onNavigationIconClick = onBack
+                onNavigationIconClick = onBack,
+                onProfileClick = onProfileClick,
+                onSettingsClick = onSettingsClick
             )
         }
     ) { padding ->
         Column(modifier = Modifier.padding(padding).fillMaxSize().padding(16.dp)) {
-            Text("Public Records Directory", style = MaterialTheme.typography.titleLarge)
+            Text(stringResource(R.string.text_public_records_directory), style = MaterialTheme.typography.titleLarge)
             Spacer(modifier = Modifier.height(16.dp))
             
             RecordCategoryCard(

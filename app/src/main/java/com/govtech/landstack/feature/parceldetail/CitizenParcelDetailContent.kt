@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.res.stringResource
+import com.govtech.landstack.R
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -37,7 +39,7 @@ fun CitizenParcelDetailContent(
     // GIS & UPIN
     SectionCard(title = "GIS & Location (UPIN: $ulpin)") {
         Box(modifier = Modifier.fillMaxWidth().height(150.dp).background(Color.LightGray, RoundedCornerShape(8.dp)), contentAlignment = Alignment.Center) {
-            Text("Map Thumbnail (GIS Points)")
+            Text(stringResource(R.string.text_map_thumbnail_gis_points))
         }
         Spacer(modifier = Modifier.height(8.dp))
         DetailRow("State", parcel.base.state)
@@ -51,7 +53,7 @@ fun CitizenParcelDetailContent(
         onClick = { Toast.makeText(context, "Record of Rights Screen Not Implemented", Toast.LENGTH_SHORT).show() }, 
         modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
     ) {
-        Text("View Record of Rights")
+        Text(stringResource(R.string.text_view_record_of_rights))
     }
     
     Spacer(modifier = Modifier.height(8.dp))
@@ -59,7 +61,7 @@ fun CitizenParcelDetailContent(
         onClick = { Toast.makeText(context, "Ownership Screen Not Implemented", Toast.LENGTH_SHORT).show() }, 
         modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
     ) {
-        Text("View Ownership & History")
+        Text(stringResource(R.string.text_view_ownership_history))
     }
     
     Spacer(modifier = Modifier.height(8.dp))
@@ -67,7 +69,7 @@ fun CitizenParcelDetailContent(
         onClick = { Toast.makeText(context, "Building Permissions Screen Not Implemented", Toast.LENGTH_SHORT).show() }, 
         modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
     ) {
-        Text("View Building Permissions")
+        Text(stringResource(R.string.text_view_building_permissions))
     }
     Spacer(modifier = Modifier.height(16.dp))
 
@@ -77,7 +79,7 @@ fun CitizenParcelDetailContent(
         DetailRow("Master Plan Zoning", parcel.essential.zoning.classification)
         
         if (restrictions.isEmpty()) {
-            Text("No development restrictions.", style = MaterialTheme.typography.bodyMedium)
+            Text(stringResource(R.string.text_no_development_restrictions), style = MaterialTheme.typography.bodyMedium)
         } else {
             restrictions.forEach { restriction ->
                 DetailRow("Restriction (${restriction.restrictionType})", restriction.description ?: "N/A")

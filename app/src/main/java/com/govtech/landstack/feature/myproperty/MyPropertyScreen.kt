@@ -8,6 +8,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
+import androidx.compose.ui.res.stringResource
+import com.govtech.landstack.R
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -33,7 +35,7 @@ fun MyPropertyScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("My Property") },
+                title = { Text(stringResource(R.string.text_my_property)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
@@ -59,8 +61,7 @@ fun MyPropertyScreen(
                 }
                 is UiState.Empty -> {
                     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                        Text(
-                            "You don't have any properties registered yet.", 
+                        Text(stringResource(R.string.text_you_dont_have_any), 
                             style = MaterialTheme.typography.bodyLarge,
                             color = Color.Gray
                         )
@@ -69,8 +70,7 @@ fun MyPropertyScreen(
                 is UiState.Error -> {
                     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text(
-                                "Couldn't load your properties",
+                            Text(stringResource(R.string.text_couldnt_load_your_properties),
                                 style = MaterialTheme.typography.titleMedium,
                                 color = MaterialTheme.colorScheme.error
                             )
@@ -132,11 +132,11 @@ fun MyPropertyCard(parcel: ParcelEntity, onClick: () -> Unit) {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Column {
-                    Text("State", style = MaterialTheme.typography.bodySmall, color = Color.Gray)
+                    Text(stringResource(R.string.text_state), style = MaterialTheme.typography.bodySmall, color = Color.Gray)
                     Text(parcel.state, style = MaterialTheme.typography.bodyMedium)
                 }
                 Column {
-                    Text("District", style = MaterialTheme.typography.bodySmall, color = Color.Gray)
+                    Text(stringResource(R.string.text_district), style = MaterialTheme.typography.bodySmall, color = Color.Gray)
                     Text(parcel.district, style = MaterialTheme.typography.bodyMedium)
                 }
             }

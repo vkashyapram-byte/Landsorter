@@ -9,6 +9,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
+import androidx.compose.ui.res.stringResource
+import com.govtech.landstack.R
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -79,7 +81,7 @@ fun ParcelListScreen(
             OutlinedTextField(
                 value = searchQuery,
                 onValueChange = { searchQuery = it },
-                label = { Text("Search by ULPIN or Location") },
+                label = { Text(stringResource(R.string.text_search_by_ulpin_or)) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp, vertical = 8.dp),
@@ -95,8 +97,7 @@ fun ParcelListScreen(
                 }
                 is com.govtech.landstack.ui.util.UiState.Empty -> {
                     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                        Text(
-                            "No parcels found.", 
+                        Text(stringResource(R.string.text_no_parcels_found), 
                             style = MaterialTheme.typography.bodyLarge,
                             color = Color.Gray
                         )
@@ -105,8 +106,7 @@ fun ParcelListScreen(
                 is com.govtech.landstack.ui.util.UiState.Error -> {
                     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text(
-                                "Couldn't load parcels",
+                            Text(stringResource(R.string.text_couldnt_load_parcels),
                                 style = MaterialTheme.typography.titleMedium,
                                 color = MaterialTheme.colorScheme.error
                             )
@@ -117,7 +117,7 @@ fun ParcelListScreen(
                             )
                             Spacer(modifier = Modifier.height(16.dp))
                             Button(onClick = { /* In a real app we'd trigger a reload event here */ }) {
-                                Text("Retry")
+                                Text(stringResource(R.string.text_retry))
                             }
                         }
                     }
@@ -130,8 +130,7 @@ fun ParcelListScreen(
                     ) {
                         if (filteredParcels.isEmpty()) {
                             item {
-                                Text(
-                                    "No parcels found matching your search.", 
+                                Text(stringResource(R.string.text_no_parcels_found_matching), 
                                     modifier = Modifier.padding(16.dp),
                                     style = MaterialTheme.typography.bodyLarge,
                                     color = Color.Gray
@@ -176,11 +175,11 @@ fun ParcelCard(parcel: ParcelEntity, onClick: () -> Unit) {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Column {
-                    Text("State", style = MaterialTheme.typography.bodySmall, color = Color.Gray)
+                    Text(stringResource(R.string.text_state), style = MaterialTheme.typography.bodySmall, color = Color.Gray)
                     Text(parcel.state, style = MaterialTheme.typography.bodyMedium)
                 }
                 Column {
-                    Text("District", style = MaterialTheme.typography.bodySmall, color = Color.Gray)
+                    Text(stringResource(R.string.text_district), style = MaterialTheme.typography.bodySmall, color = Color.Gray)
                     Text(parcel.district, style = MaterialTheme.typography.bodyMedium)
                 }
             }

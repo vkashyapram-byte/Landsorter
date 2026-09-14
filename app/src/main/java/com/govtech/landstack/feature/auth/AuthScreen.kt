@@ -8,6 +8,8 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.res.stringResource
+import com.govtech.landstack.R
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -76,7 +78,7 @@ fun AuthScreen(
                 OutlinedTextField(
                     value = email,
                     onValueChange = { email = it },
-                    label = { Text("Email") },
+                    label = { Text(stringResource(R.string.text_email)) },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp)
@@ -87,7 +89,7 @@ fun AuthScreen(
                 OutlinedTextField(
                     value = password,
                     onValueChange = { password = it },
-                    label = { Text("Password") },
+                    label = { Text(stringResource(R.string.text_password)) },
                     visualTransformation = PasswordVisualTransformation(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                     modifier = Modifier.fillMaxWidth(),
@@ -104,7 +106,7 @@ fun AuthScreen(
                         modifier = Modifier.fillMaxWidth().height(50.dp),
                         shape = RoundedCornerShape(12.dp)
                     ) {
-                        Text("Login", style = MaterialTheme.typography.titleMedium)
+                        Text(stringResource(R.string.text_login), style = MaterialTheme.typography.titleMedium)
                     }
 
                     Spacer(modifier = Modifier.height(12.dp))
@@ -114,7 +116,7 @@ fun AuthScreen(
                         modifier = Modifier.fillMaxWidth().height(50.dp),
                         shape = RoundedCornerShape(12.dp)
                     ) {
-                        Text("Sign Up", style = MaterialTheme.typography.titleMedium)
+                        Text(stringResource(R.string.text_sign_up), style = MaterialTheme.typography.titleMedium)
                     }
                 }
 
@@ -141,8 +143,7 @@ fun AuthScreen(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(6.dp)
             ) {
-                Text(
-                    "DEBUG — Quick Login",
+                Text(stringResource(R.string.text_debug_quick_login),
                     color = MaterialTheme.colorScheme.error.copy(alpha = 0.7f),
                     style = MaterialTheme.typography.labelSmall
                 )

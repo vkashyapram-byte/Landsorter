@@ -74,6 +74,7 @@ dependencies {
   implementation(libs.androidx.compose.ui)
   implementation(libs.androidx.compose.ui.tooling.preview)
   implementation(libs.androidx.compose.material3)
+  implementation(libs.androidx.compose.material.icons.extended)
   // Tooling
   debugImplementation(libs.androidx.compose.ui.tooling)
   // Instrumented tests
@@ -129,4 +130,10 @@ dependencies {
   implementation(libs.supabase.postgrest)
   implementation(libs.supabase.auth)
   implementation(libs.work.runtime.ktx)
+
+  // Preferences DataStore
+  implementation(libs.androidx.datastore.preferences)
+
+  // AppCompat for Locale Support
+  implementation(libs.androidx.appcompat)
 }
